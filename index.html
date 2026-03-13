@@ -1,229 +1,523 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Crypto Help Center</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BitsRecover – Professional Crypto Wallet Recovery</title>
+
+<meta name="description"
+content="Lost access to Bitcoin, Ethereum or other cryptocurrencies? Our expert recovery team helps you regain your funds safely.">
 
 <script src="https://cdn.tailwindcss.com"></script>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
-
 <style>
-body{
-font-family:Inter,sans-serif;
+
+html{
+scroll-behavior:smooth;
 }
+
+:root{
+--primary:#f59e0b;
+}
+
+.gradient-btn{
+background:linear-gradient(135deg,#fbbf24,#f97316);
+}
+
 </style>
 
 </head>
 
-<body class="bg-gradient-to-br from-[#0B0F2E] via-[#10163F] to-[#1B245C] text-white min-h-screen">
+
+<body class="bg-gray-50 font-sans">
+
+<!-- TOP BAR -->
+
+<div class="bg-yellow-400 text-center py-2 text-sm font-semibold">
+
+<a href="/contact-us.html" class="hover:underline">
+Start Your Recovery Process →
+</a>
+
+</div>
+
+
 
 <!-- HEADER -->
 
-<header class="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto border-b border-white/10">
+<header class="bg-white shadow sticky top-0 z-50">
 
-<div class="flex items-center space-x-2">
-<span class="font-bold text-xl">Crypto</span>
+<div class="max-w-7xl mx-auto px-4">
+
+<div class="flex justify-between items-center py-4">
+
+<!-- Logo -->
+
+<a href="/" class="flex items-center">
+
+<img src="https://bitsrecover.com/logo.png" class="h-12">
+
+</a>
+
+
+<!-- Desktop Nav -->
+
+<nav class="hidden md:flex space-x-8 items-center">
+
+<a href="/services.html" class="text-gray-700 hover:text-yellow-500">Services</a>
+
+<a href="whychooseus.html" class="text-gray-700 hover:text-yellow-500">Why Choose Us</a>
+
+<a href="testimonials.html" class="text-gray-700 hover:text-yellow-500">Testimonials</a>
+
+<a href="/blog.html" class="text-gray-700 hover:text-yellow-500">Blog</a>
+
+<a href="/contact-us.html"
+class="gradient-btn text-white px-6 py-2 rounded-full font-semibold hover:brightness-110">
+Get Started
+</a>
+
+</nav>
+
+
+<!-- Mobile Button -->
+
+<button id="menuBtn" class="md:hidden">
+
+<svg xmlns="http://www.w3.org/2000/svg"
+class="h-8 w-8"
+fill="none"
+viewBox="0 0 24 24"
+stroke="currentColor">
+
+<path stroke-linecap="round"
+stroke-linejoin="round"
+stroke-width="2"
+d="M4 6h16M4 12h16M4 18h16"/>
+
+</svg>
+
+</button>
+
 </div>
 
-<button onclick="openModal()" class="bg-[#3B7FFF] px-4 py-2 rounded-lg font-semibold hover:bg-[#2a5edb] transition">
-Get Support
-</button>
+
+<!-- MOBILE MENU -->
+
+<div id="mobileMenu"
+class="hidden md:hidden pb-6">
+
+<a href="/services.html" class="block py-2">Services</a>
+
+<a href="#why-us" class="block py-2">Why Choose Us</a>
+
+<a href="#testimonials" class="block py-2">Testimonials</a>
+
+<a href="/blog.html.html" class="block py-2">Blog</a>
+
+<a href="/contact-us.html"
+class="block mt-2 bg-yellow-500 text-white px-5 py-2 rounded-full text-center">
+Get Started
+</a>
+
+</div>
+
+</div>
 
 </header>
 
 
+
 <!-- HERO -->
 
-<main class="max-w-5xl mx-auto px-6 py-16 text-center">
+<section class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-24">
 
-<div class="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl shadow-xl p-10">
+<div class="max-w-7xl mx-auto px-4 text-center">
 
-<p class="text-gray-400 mb-2">We're here to help</p>
+<h1 class="text-4xl md:text-6xl font-bold mb-6">
 
-<h1 class="sm:text-5xl  text-2xl font-bold mb-6">
-Crypto Help Center
+Lost Access To Your Crypto?
+
+<span class="text-yellow-400">
+We Can Recover It
+</span>
+
 </h1>
 
-<p class="text-gray-300 mb-8">
-Submit your request and our support team will contact you shortly.
+
+<p class="text-xl text-gray-300 max-w-3xl mx-auto mb-10">
+
+Recover lost Bitcoin, Ethereum, Dogecoin, XRP, damaged wallets,
+forgotten passwords and more with our expert crypto recovery specialists.
+
 </p>
 
-<button onclick="openModal()" class="bg-gradient-to-r from-[#3B7FFF] to-[#2a5edb] px-8 py-3 rounded-full font-semibold hover:scale-105 transition">
-Open Support Form
-</button>
 
+<a href="/contact-us.html"
+class="gradient-btn px-10 py-5 text-xl rounded-full font-bold hover:brightness-110">
 
-    <!-- Quick Links -->
-    <section class="space-y-4 mt-12 sm:space-y-6 mb-12 sm:mb-16 max-w-5xl mx-auto text-center">
-      <div class="bg-white/5 p-5 sm:p-6 md:p-8 rounded-xl shadow-lg hover:shadow-2xl transition">
-        <p class="font-semibold text-base sm:text-lg md:text-xl mb-2 sm:mb-3">Get started</p>
-        <p class="text-gray-300 text-xs sm:text-sm md:text-base mb-3 sm:mb-4">
-          Easy set up Tangem and start using it.
-        </p>
-        <a class="text-[#3B7FFF] text-xs sm:text-sm font-medium hover:underline" href="#">
-          Start now &gt;
-        </a>
-      </div>
+Start Recovery Now →
 
-      <div class="bg-white/5 p-5 sm:p-6 md:p-8 rounded-xl shadow-lg hover:shadow-2xl transition">
-        <p class="font-semibold text-base sm:text-lg md:text-xl mb-2 sm:mb-3">Tangem Guide</p>
-        <p class="text-gray-300 text-xs sm:text-sm md:text-base mb-3 sm:mb-4">
-          All about Tangem products and their main features.
-        </p>
-        <a class="text-[#3B7FFF] text-xs sm:text-sm font-medium hover:underline" href="#">
-          Check Guide &gt;
-        </a>
-      </div>
+</a>
 
-      <div class="bg-white/5 p-5 sm:p-6 md:p-8 rounded-xl shadow-lg hover:shadow-2xl transition">
-        <p class="font-semibold text-base sm:text-lg md:text-xl mb-2 sm:mb-3">Tangem AMAs</p>
-        <p class="text-gray-300 text-xs sm:text-sm md:text-base mb-3 sm:mb-4">
-          Learn more about Tangem from our expert speakers.
-        </p>
-        <a class="text-[#3B7FFF] text-xs sm:text-sm font-medium hover:underline" href="#">
-          Watch now &gt;
-        </a>
-      </div>
-
-      <!-- New Onchain Support Card -->
-      <div class="bg-white/5 p-5 sm:p-6 md:p-8 rounded-xl shadow-lg hover:shadow-2xl transition">
-        <p class="font-semibold text-base sm:text-lg md:text-xl mb-2 sm:mb-3">Onchain Support</p>
-        <p class="text-gray-300 text-xs sm:text-sm md:text-base mb-3 sm:mb-4">
-          Direct assistance from our Onchain experts whenever you need it.
-        </p>
-        <a class="text-[#3B7FFF] text-xs sm:text-sm font-medium hover:underline"
-          href="mailto:support@onchainCrypto.com">
-          Contact Support &gt;
-        </a>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="mt-12 sm:mt-20 text-center max-w-xs sm:max-w-sm mx-auto">
-      <div class="flex items-center justify-center space-x-2 mb-2 sm:mb-3">
-        <img alt="Crypto logo" class="w-5 h-5 sm:w-6 sm:h-6"
-          src="https://storage.googleapis.com/a1aa/image/024b10f4-7f72-4c7f-f439-2945ac3316a7.jpg" />
-        <p class="font-semibold text-xs sm:text-sm">Crypto</p>
-      </div>
-      <p class="text-gray-400 text-xs sm:text-sm mb-2">
-        Global Headquarters, Onchain AG <br />
-        Baarerstrasse 10, 6300 Zug, Switzerland
-      </p>
-
-      <!-- Onchain Support Mention -->
-      <p class="text-gray-300 text-xs sm:text-sm mb-1">For assistance, reach out to <span
-          class="text-[#3B7FFF] font-semibold">Onchain Support</span></p>
-
-      <a class="text-[#3B7FFF] text-xs sm:text-sm underline mt-1 inline-block">
-        support@onchainCrypto.com
-      </a>
-    </footer>
 </div>
 
+</section>
 
 
-</main>
+
+<!-- FEATURES -->
+
+<section class="py-16 bg-white">
+
+<div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+
+<div>
+<div class="text-5xl mb-4 text-yellow-500">$</div>
+<h3 class="font-bold">Lowest Fees</h3>
+</div>
+
+<div>
+<div class="text-5xl mb-4 text-yellow-500">⚡</div>
+<h3 class="font-bold">Fast Recovery</h3>
+</div>
+
+<div>
+<div class="text-5xl mb-4 text-yellow-500">🔐</div>
+<h3 class="font-bold">Secure Process</h3>
+</div>
+
+<div>
+<div class="text-5xl mb-4 text-yellow-500">₿</div>
+<h3 class="font-bold">All Cryptos Supported</h3>
+</div>
+
+</div>
+
+</section>
 
 
-<!-- MODAL -->
 
-<div id="queryModal" class="fixed inset-0 bg-black/70 hidden items-center justify-center p-4 z-50">
+<!-- SERVICES -->
 
-<div class="bg-gradient-to-br from-[#0B0F2E] to-[#1B245C] rounded-2xl shadow-xl w-full max-w-lg p-8 relative">
+<section id="services" class="py-20 bg-gray-100">
 
-<button onclick="closeModal()" class="absolute top-4 right-4 text-white text-xl">
-✕
-</button>
+<div class="max-w-7xl mx-auto px-4">
 
-<h2 class="sm:text-3xl text-xl font-bold mb-2 text-center">
-Crypto Wallet Support
+<h2 class="text-4xl font-bold text-center mb-12">
+
+Crypto Recovery Services
+
 </h2>
 
-<p class="text-gray-300 text-center mb-6">
-Submit your request and our support team will contact you shortly.
+
+<div class="grid md:grid-cols-3 gap-10">
+
+
+<div class="bg-white p-8 rounded-xl shadow hover:shadow-xl transition">
+
+<h3 class="text-xl font-bold mb-3">Lost Password Recovery</h3>
+
+<p class="text-gray-600">
+
+Recover forgotten wallet passwords and encrypted wallet files.
+
 </p>
 
-<form action="https://formspree.io/f/xojkergr" method="POST" class="space-y-4">
+</div>
+
+
+
+<div class="bg-white p-8 rounded-xl shadow hover:shadow-xl transition">
+
+<h3 class="text-xl font-bold mb-3">Exchange Recovery</h3>
+
+<p class="text-gray-600">
+
+Recover funds stuck on exchanges or locked accounts.
+
+</p>
+
+</div>
+
+
+
+<div class="bg-white p-8 rounded-xl shadow hover:shadow-xl transition">
+
+<h3 class="text-xl font-bold mb-3">Hardware Wallet Recovery</h3>
+
+<p class="text-gray-600">
+
+Ledger, Trezor and other hardware wallet recovery.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- WHY US -->
+
+<section id="why-us" class="py-20 bg-white">
+
+<div class="max-w-7xl mx-auto px-4">
+
+<h2 class="text-4xl font-bold text-center mb-16">
+
+Why Choose BitsRecover
+
+</h2>
+
+
+<div class="grid md:grid-cols-3 gap-10 text-center">
+
 
 <div>
-<label class="text-sm text-gray-300">Full Name</label>
-<input type="text" name="name" required placeholder="Enter your name"
-class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:ring-2 focus:ring-[#3B7FFF] outline-none">
+
+<div class="text-6xl mb-6">👨‍💻</div>
+
+<h3 class="font-bold text-xl mb-3">
+
+Professional Experts
+
+</h3>
+
+<p class="text-gray-600">
+
+Experienced blockchain engineers with years of recovery experience.
+
+</p>
+
 </div>
+
 
 <div>
-<label class="text-sm text-gray-300">Email Address</label>
-<input type="email" name="email" required placeholder="Enter your email"
-class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:ring-2 focus:ring-[#3B7FFF] outline-none">
+
+<div class="text-6xl mb-6">💰</div>
+
+<h3 class="font-bold text-xl mb-3">
+
+No Recovery No Fee
+
+</h3>
+
+<p class="text-gray-600">
+
+You only pay when we successfully recover your funds.
+
+</p>
+
 </div>
+
 
 <div>
-<label class="text-sm text-gray-300">Phone Number</label>
-<input type="tel" name="phone" placeholder="Enter phone number"
-class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:ring-2 focus:ring-[#3B7FFF] outline-none">
+
+<div class="text-6xl mb-6">⚡</div>
+
+<h3 class="font-bold text-xl mb-3">
+
+Fast Turnaround
+
+</h3>
+
+<p class="text-gray-600">
+
+Many cases resolved within 24-72 hours.
+
+</p>
+
 </div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- TESTIMONIALS -->
+
+<section id="testimonials" class="py-20 bg-gray-50">
+
+<div class="max-w-7xl mx-auto px-4">
+
+<h2 class="text-4xl font-bold text-center mb-12">
+
+Client Testimonials
+
+</h2>
+
+
+<div class="grid md:grid-cols-3 gap-8">
+
+
+<div class="bg-white p-6 rounded-xl shadow">
+
+<p>
+
+"They helped recover my Bitcoin wallet after I forgot the password."
+
+</p>
+
+<p class="font-bold mt-4">Michael R.</p>
+
+</div>
+
+
+
+<div class="bg-white p-6 rounded-xl shadow">
+
+<p>
+
+"Professional team and fast service. Highly recommended."
+
+</p>
+
+<p class="font-bold mt-4">David P.</p>
+
+</div>
+
+
+
+<div class="bg-white p-6 rounded-xl shadow">
+
+<p>
+
+"They recovered my ETH wallet after months of being locked out."
+
+</p>
+
+<p class="font-bold mt-4">Sarah L.</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- CTA -->
+
+<section class="bg-gradient-to-br from-yellow-500 to-orange-600 text-white py-20 text-center">
+
+<h2 class="text-4xl font-bold mb-6">
+
+Start Your Crypto Recovery Today
+
+</h2>
+
+<a href="/contact-us.html"
+class="bg-white text-orange-600 px-10 py-5 text-xl font-bold rounded-full">
+
+Contact Our Experts →
+
+</a>
+
+</section>
+
+
+
+<!-- FOOTER -->
+
+<footer class="bg-gray-900 text-gray-300 py-16">
+
+<div class="max-w-7xl mx-auto px-4 grid md:grid-cols-4 gap-10">
+
 
 <div>
-<label class="text-sm text-gray-300">Your Message</label>
-<textarea name="message" rows="3" placeholder="Describe your issue..."
-class="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:ring-2 focus:ring-[#3B7FFF] outline-none"></textarea>
-</div>
 
-<button type="submit"
-class="w-full bg-gradient-to-r from-[#3B7FFF] to-[#2a5edb] py-3 rounded-lg font-semibold hover:scale-105 transition">
-Submit Request
-</button>
+<img src="https://bitsrecover.com/logo.png" class="h-12 mb-4">
 
-</form>
+<p>Professional Crypto Wallet Recovery Service</p>
 
 </div>
 
+
+
+<div>
+
+<h4 class="text-white font-bold mb-4">Company</h4>
+
+<ul class="space-y-2">
+
+<li><a href="/about-us">About</a></li>
+
+<li><a href="/blog.html">Blog</a></li>
+
+<li><a href="/contact-us.html">Contact</a></li>
+
+</ul>
+
 </div>
+
+
+
+<div>
+
+<h4 class="text-white font-bold mb-4">Legal</h4>
+
+<ul class="space-y-2">
+
+<li><a href="/privacy-policy">Privacy Policy</a></li>
+
+<li><a href="/terms">Terms</a></li>
+
+<li><a href="/disclaimer">Disclaimer</a></li>
+
+</ul>
+
+</div>
+
+
+
+<div>
+
+<h4 class="text-white font-bold mb-4">Wallets</h4>
+
+<ul class="space-y-2">
+
+<li>MetaMask</li>
+<li>Ledger</li>
+<li>Trezor</li>
+<li>Electrum</li>
+
+</ul>
+
+</div>
+
+
+</div>
+
+<div class="text-center mt-10 border-t border-gray-700 pt-6 text-sm">
+
+© 2026 BitsRecover. All rights reserved.
+
+</div>
+
+</footer>
+
 
 
 <script>
 
-function openModal(){
+const btn=document.getElementById("menuBtn")
+const menu=document.getElementById("mobileMenu")
 
-document.getElementById("queryModal").classList.remove("hidden")
-document.getElementById("queryModal").classList.add("flex")
-
-}
-
-function closeModal(){
-
-document.getElementById("queryModal").classList.remove("flex")
-document.getElementById("queryModal").classList.add("hidden")
-
-}
-
-
-// open modal if user clicks anywhere
-
-document.addEventListener("click",function(e){
-
-if(!e.target.closest("#queryModal") && !e.target.closest("button")){
-
-openModal()
-
-}
-
-})
-
-
-// auto popup
-
-window.onload=function(){
-
-setTimeout(function(){
-
-openModal()
-
-},1500)
-
+btn.onclick=()=>{
+menu.classList.toggle("hidden")
 }
 
 </script>
