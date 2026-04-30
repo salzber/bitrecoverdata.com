@@ -1,527 +1,605 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>BitsRecover – Professional Crypto Wallet Recovery</title>
+    <title>BitsRecover – Professional Crypto Wallet Recovery</title>
 
-<meta name="description"
-content="Lost access to Bitcoin, Ethereum or other cryptocurrencies? Our expert recovery team helps you regain your funds safely.">
+    <meta name="description"
+        content="Lost access to Bitcoin, Ethereum or other cryptocurrencies? Our expert recovery team helps you regain your funds safely.">
 
-<script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 
-<style>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
 
-html{
-scroll-behavior:smooth;
-}
+        :root {
+            --primary: #f59e0b;
+        }
 
-:root{
---primary:#f59e0b;
-}
+        .gradient-btn {
+            background: linear-gradient(135deg, #fbbf24, #f97316);
+        }
+    </style>
 
-.gradient-btn{
-background:linear-gradient(135deg,#fbbf24,#f97316);
-}
+    <link rel="stylesheet" href="index.css">
+    <script src="//code.jivosite.com/widget/C5T3VmwYw6" async></script>
 
-</style>
 
 </head>
 
 
 <body class="bg-gray-50 font-sans">
 
-<!-- TOP BAR -->
 
-<div class="bg-yellow-400 text-center py-2 text-sm font-semibold">
+    <!-- LEAD FORM MODAL -->
+    <div id="leadModal" class="fixed inset-0 bg-black bg-opacity-70 hidden justify-center items-center z-50">
 
-<a href="/contact-us.html" class="hover:underline">
-Start Your Recovery Process →
-</a>
+        <div class="bg-white w-full max-w-lg p-8 rounded-2xl relative shadow-2xl">
 
-</div>
+            <!-- CLOSE -->
+            <button onclick="closeForm()" class="absolute top-3 right-4 text-xl font-bold">✖</button>
 
+            <h2 class="text-2xl font-bold mb-2 text-center">Start Your Recovery</h2>
+            <p class="text-center text-gray-500 mb-6">Fill the form or contact via WhatsApp</p>
 
+            <!-- FORM -->
+            <form action="https://formspree.io/f/xojkergr" method="POST" class="space-y-4">
 
-<!-- HEADER -->
+                <input type="text" name="name" placeholder="Full Name" required class="w-full border p-3 rounded-lg">
 
-<header class="bg-white shadow sticky top-0 z-50">
+                <input type="email" name="email" placeholder="Email Address" required
+                    class="w-full border p-3 rounded-lg">
 
-<div class="max-w-7xl mx-auto px-4">
+                <input type="tel" name="phone" placeholder="Phone Number" required class="w-full border p-3 rounded-lg">
 
-<div class="flex justify-between items-center py-4">
+                <select name="wallet" class="w-full border p-3 rounded-lg">
+                    <option>Select Wallet Type</option>
+                    <option>MetaMask</option>
+                    <option>Ledger</option>
+                    <option>Trezor</option>
+                    <option>Other</option>
+                </select>
 
-<!-- Logo -->
+                <textarea name="message" placeholder="Describe your issue..." rows="4"
+                    class="w-full border p-3 rounded-lg"></textarea>
 
-<a href="/" class="flex items-center">
+                <button type="submit" class="w-full gradient-btn text-white py-3 rounded-lg font-bold text-lg">
+                    Submit Request 🚀
+                </button>
 
-<img src="https://bitsrecover.com/logo.png" class="h-12">
+            </form>
 
-</a>
+            <!-- DIVIDER -->
+            <div class="flex items-center my-6">
+                <div class="flex-1 h-px bg-gray-300"></div>
+                <span class="px-3 text-gray-500 text-sm">OR</span>
+                <div class="flex-1 h-px bg-gray-300"></div>
+            </div>
 
+            <!-- WHATSAPP BUTTON -->
+            <a onclick="openWhatsApp()"
+                class="block w-full bg-green-500 text-white text-center py-3 rounded-lg font-bold hover:bg-green-600">
+                💬 Chat on WhatsApp
+            </a>
 
-<!-- Desktop Nav -->
+        </div>
 
-<nav class="hidden md:flex space-x-8 items-center">
+    </div>
 
-<a href="/services.html" class="text-gray-700 hover:text-yellow-500">Services</a>
 
-<a href="whychooseus.html" class="text-gray-700 hover:text-yellow-500">Why Choose Us</a>
+    <!-- TOP BAR -->
 
-<a href="testimonials.html" class="text-gray-700 hover:text-yellow-500">Testimonials</a>
+    <div class="bg-yellow-400 text-center py-2 text-sm font-semibold">
 
-<a href="/blog.html" class="text-gray-700 hover:text-yellow-500">Blog</a>
+        <a onclick="openWhatsApp()" class="hover:underline">
+            Start Your Recovery Process →
+        </a>
 
-<a href="/contact-us.html"
-class="gradient-btn text-white px-6 py-2 rounded-full font-semibold hover:brightness-110">
-Get Started
-</a>
+    </div>
 
-</nav>
 
 
-<!-- Mobile Button -->
+    <!-- HEADER -->
 
-<button id="menuBtn" class="md:hidden">
+    <header class="bg-white shadow sticky top-0 z-50">
 
-<svg xmlns="http://www.w3.org/2000/svg"
-class="h-8 w-8"
-fill="none"
-viewBox="0 0 24 24"
-stroke="currentColor">
+        <div class="max-w-7xl mx-auto px-4">
 
-<path stroke-linecap="round"
-stroke-linejoin="round"
-stroke-width="2"
-d="M4 6h16M4 12h16M4 18h16"/>
+            <div class="flex justify-between items-center py-4">
 
-</svg>
+                <!-- Logo -->
 
-</button>
+                <a href="/" class="flex items-center">
 
-</div>
+                    <img src="https://bitsrecover.com/logo.png" class="h-12">
 
+                </a>
 
-<!-- MOBILE MENU -->
 
-<div id="mobileMenu"
-class="hidden md:hidden pb-6">
+                <!-- Desktop Nav -->
 
-<a href="/services.html" class="block py-2">Services</a>
+                <nav class="hidden md:flex space-x-8 items-center">
 
-<a href="#why-us" class="block py-2">Why Choose Us</a>
+                    <a href="services.html" class="text-gray-700 hover:text-yellow-500">Services</a>
 
-<a href="#testimonials" class="block py-2">Testimonials</a>
+                    <a href="whychooseus.html" class="text-gray-700 hover:text-yellow-500">Why Choose Us</a>
 
-<a href="/blog.html.html" class="block py-2">Blog</a>
+                    <a href="testimonials.html" class="text-gray-700 hover:text-yellow-500">Testimonials</a>
 
-<a href="/contact-us.html"
-class="block mt-2 bg-yellow-500 text-white px-5 py-2 rounded-full text-center">
-Get Started
-</a>
+                    <a href="blog.html" class="text-gray-700 hover:text-yellow-500">Blog</a>
 
-</div>
+                    <a onclick="openForm()"
+                        class="gradient-btn text-white px-6 py-2 rounded-full font-semibold hover:brightness-110">
+                        Get Started
+                    </a>
 
-</div>
+                </nav>
 
-</header>
 
+                <!-- Mobile Button -->
 
+                <button id="menuBtn" class="md:hidden">
 
-<!-- HERO -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
 
-<section class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
 
-<div class="max-w-7xl mx-auto px-4 text-center">
+                    </svg>
 
-<h1 class="text-4xl md:text-6xl font-bold mb-6">
+                </button>
 
-Lost Access To Your Crypto?
+            </div>
 
-<span class="text-yellow-400">
-We Can Recover It
-</span>
 
-</h1>
+            <!-- MOBILE MENU -->
 
+            <div id="mobileMenu" class="hidden md:hidden pb-6">
 
-<p class="text-xl text-gray-300 max-w-3xl mx-auto mb-10">
+                <a href="services.html" class="block py-2">Services</a>
 
-Recover lost Bitcoin, Ethereum, Dogecoin, XRP, damaged wallets,
-forgotten passwords and more with our expert crypto recovery specialists.
+                <a href="whychooseus.html" class="block py-2">Why Choose Us</a>
 
-</p>
+                <a href="testimonials.html" class="block py-2">Testimonials</a>
 
+                <a href="blog.html" class="block py-2">Blog</a>
 
-<a href="/contact-us.html"
-class="gradient-btn px-10 py-5 text-xl rounded-full font-bold hover:brightness-110">
+                <a onclick="openForm()" class="block mt-2 bg-yellow-500 text-white px-5 py-2 rounded-full text-center">
+                    Get Started
+                </a>
 
-Start Recovery Now →
+            </div>
 
-</a>
+        </div>
 
-</div>
+    </header>
 
-</section>
 
 
+    <!-- HERO -->
 
-<!-- FEATURES -->
+    <section class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-24">
 
-<section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 text-center">
 
-<div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">
 
-<div>
-<div class="text-5xl mb-4 text-yellow-500">$</div>
-<h3 class="font-bold">Lowest Fees</h3>
-</div>
+                Lost Access To Your Crypto?
 
-<div>
-<div class="text-5xl mb-4 text-yellow-500">⚡</div>
-<h3 class="font-bold">Fast Recovery</h3>
-</div>
+                <span class="text-yellow-400">
+                    We Can Recover It
+                </span>
 
-<div>
-<div class="text-5xl mb-4 text-yellow-500">🔐</div>
-<h3 class="font-bold">Secure Process</h3>
-</div>
+            </h1>
 
-<div>
-<div class="text-5xl mb-4 text-yellow-500">₿</div>
-<h3 class="font-bold">All Cryptos Supported</h3>
-</div>
 
-</div>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-10">
 
-</section>
+                Recover lost Bitcoin, Ethereum, Dogecoin, XRP, damaged wallets,
+                forgotten passwords and more with our expert crypto recovery specialists.
 
+            </p>
 
 
-<!-- SERVICES -->
+            <a onclick="openForm()" class="gradient-btn px-10 py-5 text-xl rounded-full font-bold hover:brightness-110">
 
-<section id="services" class="py-20 bg-gray-100">
+                Start Recovery Now →
 
-<div class="max-w-7xl mx-auto px-4">
+            </a>
 
-<h2 class="text-4xl font-bold text-center mb-12">
+        </div>
 
-Crypto Recovery Services
+    </section>
 
-</h2>
 
 
-<div class="grid md:grid-cols-3 gap-10">
+    <!-- FEATURES -->
 
+    <section class="py-16 bg-white">
 
-<div class="bg-white p-8 rounded-xl shadow hover:shadow-xl transition">
+        <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
 
-<h3 class="text-xl font-bold mb-3">Lost Password Recovery</h3>
+            <div>
+                <div class="text-5xl mb-4 text-yellow-500">$</div>
+                <h3 class="font-bold">Lowest Fees</h3>
+            </div>
 
-<p class="text-gray-600">
+            <div>
+                <div class="text-5xl mb-4 text-yellow-500">⚡</div>
+                <h3 class="font-bold">Fast Recovery</h3>
+            </div>
 
-Recover forgotten wallet passwords and encrypted wallet files.
+            <div>
+                <div class="text-5xl mb-4 text-yellow-500">🔐</div>
+                <h3 class="font-bold">Secure Process</h3>
+            </div>
 
-</p>
+            <div>
+                <div class="text-5xl mb-4 text-yellow-500">₿</div>
+                <h3 class="font-bold">All Cryptos Supported</h3>
+            </div>
 
-</div>
+        </div>
 
+    </section>
 
 
-<div class="bg-white p-8 rounded-xl shadow hover:shadow-xl transition">
 
-<h3 class="text-xl font-bold mb-3">Exchange Recovery</h3>
+    <!-- SERVICES -->
 
-<p class="text-gray-600">
+    <section id="services" class="py-20 bg-gray-100">
 
-Recover funds stuck on exchanges or locked accounts.
+        <div class="max-w-7xl mx-auto px-4">
 
-</p>
+            <h2 class="text-4xl font-bold text-center mb-12">
 
-</div>
+                Crypto Recovery Services
 
+            </h2>
 
 
-<div class="bg-white p-8 rounded-xl shadow hover:shadow-xl transition">
+            <div class="grid md:grid-cols-3 gap-10">
 
-<h3 class="text-xl font-bold mb-3">Hardware Wallet Recovery</h3>
 
-<p class="text-gray-600">
+                <div class="bg-white p-8 rounded-xl shadow hover:shadow-xl transition">
 
-Ledger, Trezor and other hardware wallet recovery.
+                    <h3 class="text-xl font-bold mb-3">Lost Password Recovery</h3>
 
-</p>
+                    <p class="text-gray-600">
 
-</div>
+                        Recover forgotten wallet passwords and encrypted wallet files.
 
-</div>
+                    </p>
 
-</div>
+                </div>
 
-</section>
 
 
+                <div class="bg-white p-8 rounded-xl shadow hover:shadow-xl transition">
 
-<!-- WHY US -->
+                    <h3 class="text-xl font-bold mb-3">Exchange Recovery</h3>
 
-<section id="why-us" class="py-20 bg-white">
+                    <p class="text-gray-600">
 
-<div class="max-w-7xl mx-auto px-4">
+                        Recover funds stuck on exchanges or locked accounts.
 
-<h2 class="text-4xl font-bold text-center mb-16">
+                    </p>
 
-Why Choose BitsRecover
+                </div>
 
-</h2>
 
 
-<div class="grid md:grid-cols-3 gap-10 text-center">
+                <div class="bg-white p-8 rounded-xl shadow hover:shadow-xl transition">
 
+                    <h3 class="text-xl font-bold mb-3">Hardware Wallet Recovery</h3>
 
-<div>
+                    <p class="text-gray-600">
 
-<div class="text-6xl mb-6">👨‍💻</div>
+                        Ledger, Trezor and other hardware wallet recovery.
 
-<h3 class="font-bold text-xl mb-3">
+                    </p>
 
-Professional Experts
+                </div>
 
-</h3>
+            </div>
 
-<p class="text-gray-600">
+        </div>
 
-Experienced blockchain engineers with years of recovery experience.
+    </section>
 
-</p>
 
-</div>
 
+    <!-- WHY US -->
 
-<div>
+    <section id="why-us" class="py-20 bg-white">
 
-<div class="text-6xl mb-6">💰</div>
+        <div class="max-w-7xl mx-auto px-4">
 
-<h3 class="font-bold text-xl mb-3">
+            <h2 class="text-4xl font-bold text-center mb-16">
 
-No Recovery No Fee
+                Why Choose BitsRecover
 
-</h3>
+            </h2>
 
-<p class="text-gray-600">
 
-You only pay when we successfully recover your funds.
+            <div class="grid md:grid-cols-3 gap-10 text-center">
 
-</p>
 
-</div>
+                <div>
 
+                    <div class="text-6xl mb-6">👨‍💻</div>
 
-<div>
+                    <h3 class="font-bold text-xl mb-3">
 
-<div class="text-6xl mb-6">⚡</div>
+                        Professional Experts
 
-<h3 class="font-bold text-xl mb-3">
+                    </h3>
 
-Fast Turnaround
+                    <p class="text-gray-600">
 
-</h3>
+                        Experienced blockchain engineers with years of recovery experience.
 
-<p class="text-gray-600">
+                    </p>
 
-Many cases resolved within 24-72 hours.
+                </div>
 
-</p>
 
-</div>
+                <div>
 
+                    <div class="text-6xl mb-6">💰</div>
 
-</div>
+                    <h3 class="font-bold text-xl mb-3">
 
-</div>
+                        No Recovery No Fee
 
-</section>
+                    </h3>
 
+                    <p class="text-gray-600">
 
+                        You only pay when we successfully recover your funds.
 
-<!-- TESTIMONIALS -->
+                    </p>
 
-<section id="testimonials" class="py-20 bg-gray-50">
+                </div>
 
-<div class="max-w-7xl mx-auto px-4">
 
-<h2 class="text-4xl font-bold text-center mb-12">
+                <div>
 
-Client Testimonials
+                    <div class="text-6xl mb-6">⚡</div>
 
-</h2>
+                    <h3 class="font-bold text-xl mb-3">
 
+                        Fast Turnaround
 
-<div class="grid md:grid-cols-3 gap-8">
+                    </h3>
 
+                    <p class="text-gray-600">
 
-<div class="bg-white p-6 rounded-xl shadow">
+                        Many cases resolved within 24-72 hours.
 
-<p>
+                    </p>
 
-"They helped recover my Bitcoin wallet after I forgot the password."
+                </div>
 
-</p>
 
-<p class="font-bold mt-4">Michael R.</p>
+            </div>
 
-</div>
+        </div>
 
+    </section>
 
 
-<div class="bg-white p-6 rounded-xl shadow">
 
-<p>
+    <!-- TESTIMONIALS -->
 
-"Professional team and fast service. Highly recommended."
+    <section id="testimonials" class="py-20 bg-gray-50">
 
-</p>
+        <div class="max-w-7xl mx-auto px-4">
 
-<p class="font-bold mt-4">David P.</p>
+            <h2 class="text-4xl font-bold text-center mb-12">
 
-</div>
+                Client Testimonials
 
+            </h2>
 
 
-<div class="bg-white p-6 rounded-xl shadow">
+            <div class="grid md:grid-cols-3 gap-8">
 
-<p>
 
-"They recovered my ETH wallet after months of being locked out."
+                <div class="bg-white p-6 rounded-xl shadow">
 
-</p>
+                    <p>
 
-<p class="font-bold mt-4">Sarah L.</p>
+                        "They helped recover my Bitcoin wallet after I forgot the password."
 
-</div>
+                    </p>
 
-</div>
+                    <p class="font-bold mt-4">Michael R.</p>
 
-</div>
+                </div>
 
-</section>
 
 
+                <div class="bg-white p-6 rounded-xl shadow">
 
-<!-- CTA -->
+                    <p>
 
-<section class="bg-gradient-to-br from-yellow-500 to-orange-600 text-white py-20 text-center">
+                        "Professional team and fast service. Highly recommended."
 
-<h2 class="text-4xl font-bold mb-6">
+                    </p>
 
-Start Your Crypto Recovery Today
+                    <p class="font-bold mt-4">David P.</p>
 
-</h2>
+                </div>
 
-<a href="/contact-us.html"
-class="bg-white text-orange-600 px-10 py-5 text-xl font-bold rounded-full">
 
-Contact Our Experts →
 
-</a>
+                <div class="bg-white p-6 rounded-xl shadow">
 
-</section>
+                    <p>
 
+                        "They recovered my ETH wallet after months of being locked out."
 
+                    </p>
 
-<!-- FOOTER -->
+                    <p class="font-bold mt-4">Sarah L.</p>
 
-<footer class="bg-gray-900 text-gray-300 py-16">
+                </div>
 
-<div class="max-w-7xl mx-auto px-4 grid md:grid-cols-4 gap-10">
+            </div>
 
+        </div>
 
-<div>
+    </section>
 
-<img src="https://bitsrecover.com/logo.png" class="h-12 mb-4">
 
-<p>Professional Crypto Wallet Recovery Service</p>
 
-</div>
+    <!-- CTA -->
 
+    <section class="bg-gradient-to-br from-yellow-500 to-orange-600 text-white py-20 text-center">
 
+        <h2 class="text-4xl font-bold mb-6">
 
-<div>
+            Start Your Crypto Recovery Today
 
-<h4 class="text-white font-bold mb-4">Company</h4>
+        </h2>
 
-<ul class="space-y-2">
+        <a onclick="openForm()" class="bg-white text-orange-600 px-10 py-5 text-xl font-bold rounded-full">
 
-<li><a href="/about-us">About</a></li>
+            Contact Our Experts →
 
-<li><a href="/blog.html">Blog</a></li>
+        </a>
 
-<li><a href="/contact-us.html">Contact</a></li>
+    </section>
 
-</ul>
 
-</div>
 
 
 
-<div>
+    <!-- FOOTER -->
 
-<h4 class="text-white font-bold mb-4">Legal</h4>
+    <footer class="bg-gray-900 text-gray-300 py-16">
 
-<ul class="space-y-2">
+        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-4 gap-10">
 
-<li><a href="/privacy-policy">Privacy Policy</a></li>
 
-<li><a href="/terms">Terms</a></li>
+            <div>
 
-<li><a href="/disclaimer">Disclaimer</a></li>
+                <img src="https://bitsrecover.com/logo.png" class="h-12 mb-4">
 
-</ul>
+                <p>Professional Crypto Wallet Recovery Service</p>
 
-</div>
+            </div>
 
 
 
-<div>
+            <div>
 
-<h4 class="text-white font-bold mb-4">Wallets</h4>
+                <h4 class="text-white font-bold mb-4">Company</h4>
 
-<ul class="space-y-2">
+                <ul class="space-y-2">
 
-<li>MetaMask</li>
-<li>Ledger</li>
-<li>Trezor</li>
-<li>Electrum</li>
+                    <li><a href="about.html">About</a></li>
 
-</ul>
+                    <li><a href="blog.html">Blog</a></li>
 
-</div>
+                    <li><a href="contact-us.html">Contact</a></li>
 
+                </ul>
 
-</div>
+            </div>
 
-<div class="text-center mt-10 border-t border-gray-700 pt-6 text-sm">
 
-© 2026 BitsRecover. All rights reserved.
 
-</div>
+            <div>
 
-</footer>
+                <h4 class="text-white font-bold mb-4">Legal</h4>
 
+                <ul class="space-y-2">
 
+                    <li><a href="privacy.html">Privacy Policy</a></li>
 
-<script>
+                    <li><a href="terms.html">Terms</a></li>
 
-const btn=document.getElementById("menuBtn")
-const menu=document.getElementById("mobileMenu")
+                    <li><a href="disclaimer.html">Disclaimer</a></li>
 
-btn.onclick=()=>{
-menu.classList.toggle("hidden")
-}
+                </ul>
 
-</script>
+            </div>
+
+
+
+            <div>
+
+                <h4 class="text-white font-bold mb-4">Wallets</h4>
+
+                <ul class="space-y-2">
+
+                    <li>MetaMask</li>
+                    <li>Ledger</li>
+                    <li>Trezor</li>
+                    <li>Electrum</li>
+
+                </ul>
+
+            </div>
+
+
+        </div>
+
+        <div class="text-center mt-10 border-t border-gray-700 pt-6 text-sm">
+
+            © 2026 BitsRecover. All rights reserved.
+
+        </div>
+
+    </footer>
+
+
+
+    <script>
+
+
+
+        function openWhatsApp() {
+            const number = "+12098890576";
+            const message = "Hi, I need crypto recovery help";
+
+            const url = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
+
+            window.open(url, "_blank");
+        }
+
+        function openForm() {
+            const modal = document.getElementById("leadModal");
+            modal.classList.remove("hidden");
+            modal.classList.add("flex");
+        }
+
+        function closeForm() {
+            const modal = document.getElementById("leadModal");
+            modal.classList.add("hidden");
+            modal.classList.remove("flex");
+        }
+
+
+        const btn = document.getElementById("menuBtn")
+        const menu = document.getElementById("mobileMenu")
+
+        btn.onclick = () => {
+            menu.classList.toggle("hidden")
+        }
+
+    </script>
 
 
 </body>
+
 </html>

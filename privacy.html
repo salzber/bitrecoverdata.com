@@ -27,14 +27,77 @@
         }
     </style>
 
+    <link rel="stylesheet" href="index.css">
+    <script src="//code.jivosite.com/widget/C5T3VmwYw6" async></script>
+
 </head>
 
 <body>
+
+
+
+
+    <!-- LEAD FORM MODAL -->
+    <div id="leadModal" class="fixed inset-0 bg-black bg-opacity-70 hidden justify-center items-center z-50">
+
+        <div class="bg-white w-full max-w-lg p-8 rounded-2xl relative shadow-2xl">
+
+            <!-- CLOSE -->
+            <button onclick="closeForm()" class="absolute top-3 right-4 text-xl font-bold">✖</button>
+
+            <h2 class="text-2xl font-bold mb-2 text-center">Start Your Recovery</h2>
+            <p class="text-center text-gray-500 mb-6">Fill the form or contact via WhatsApp</p>
+
+            <!-- FORM -->
+            <form action="https://formspree.io/f/xojkergr" method="POST" class="space-y-4">
+
+                <input type="text" name="name" placeholder="Full Name" required class="w-full border p-3 rounded-lg">
+
+                <input type="email" name="email" placeholder="Email Address" required
+                    class="w-full border p-3 rounded-lg">
+
+                <input type="tel" name="phone" placeholder="Phone Number" required class="w-full border p-3 rounded-lg">
+
+                <select name="wallet" class="w-full border p-3 rounded-lg">
+                    <option>Select Wallet Type</option>
+                    <option>MetaMask</option>
+                    <option>Ledger</option>
+                    <option>Trezor</option>
+                    <option>Other</option>
+                </select>
+
+                <textarea name="message" placeholder="Describe your issue..." rows="4"
+                    class="w-full border p-3 rounded-lg"></textarea>
+
+                <button type="submit" class="w-full gradient-btn text-white py-3 rounded-lg font-bold text-lg">
+                    Submit Request 🚀
+                </button>
+
+            </form>
+
+            <!-- DIVIDER -->
+            <div class="flex items-center my-6">
+                <div class="flex-1 h-px bg-gray-300"></div>
+                <span class="px-3 text-gray-500 text-sm">OR</span>
+                <div class="flex-1 h-px bg-gray-300"></div>
+            </div>
+
+            <!-- WHATSAPP BUTTON -->
+            <a onclick="openWhatsApp()"
+                class="block w-full bg-green-500 text-white text-center py-3 rounded-lg font-bold hover:bg-green-600">
+                💬 Chat on WhatsApp
+            </a>
+
+        </div>
+
+    </div>
+
+
     <!-- TOP BAR -->
 
     <div class="bg-yellow-400 text-center py-2 text-sm font-semibold">
 
-        <a href="/contact-us.html" class="hover:underline">
+        <a onclick="openWhatsApp()" class="hover:underline">
             Start Your Recovery Process →
         </a>
 
@@ -44,7 +107,6 @@
 
     <!-- HEADER -->
 
- 
     <header class="bg-white shadow sticky top-0 z-50">
 
         <div class="max-w-7xl mx-auto px-4">
@@ -53,7 +115,7 @@
 
                 <!-- Logo -->
 
-                <a href="index.html" class="flex items-center">
+                <a href="/" class="flex items-center">
 
                     <img src="https://bitsrecover.com/logo.png" class="h-12">
 
@@ -66,15 +128,15 @@
 
                     <a href="services.html" class="text-gray-700 hover:text-yellow-500">Services</a>
 
-                    <a href="#why-us" class="text-gray-700 hover:text-yellow-500">Why Choose Us</a>
+                    <a href="whychooseus.html" class="text-gray-700 hover:text-yellow-500">Why Choose Us</a>
 
-                    <a href="#testimonials" class="text-gray-700 hover:text-yellow-500">Testimonials</a>
+                    <a href="testimonials.html" class="text-gray-700 hover:text-yellow-500">Testimonials</a>
 
                     <a href="blog.html" class="text-gray-700 hover:text-yellow-500">Blog</a>
 
-                    <a href="contact-us.html"
+                    <a onclick="openForm()"
                         class="gradient-btn text-white px-6 py-2 rounded-full font-semibold hover:brightness-110">
-                       Contact Us
+                        Get Started
                     </a>
 
                 </nav>
@@ -101,16 +163,15 @@
 
             <div id="mobileMenu" class="hidden md:hidden pb-6">
 
-                <a href="/services.html" class="block py-2">Services</a>
+                <a href="services.html" class="block py-2">Services</a>
 
-                <a href="#why-us" class="block py-2">Why Choose Us</a>
+                <a href="whychooseus.html" class="block py-2">Why Choose Us</a>
 
-                <a href="#testimonials" class="block py-2">Testimonials</a>
+                <a href="testimonials.html" class="block py-2">Testimonials</a>
 
-                <a href="/blog.html.html" class="block py-2">Blog</a>
+                <a href="blog.html" class="block py-2">Blog</a>
 
-                <a href="/contact-us.html"
-                    class="block mt-2 bg-yellow-500 text-white px-5 py-2 rounded-full text-center">
+                <a onclick="openForm()" class="block mt-2 bg-yellow-500 text-white px-5 py-2 rounded-full text-center">
                     Get Started
                 </a>
 
@@ -276,7 +337,7 @@
 
     </section>
 
-      <footer class="bg-gray-900 text-gray-300 py-16">
+    <footer class="bg-gray-900 text-gray-300 py-16">
 
         <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-4 gap-10">
 
@@ -352,6 +413,43 @@
         </div>
 
     </footer>
+
+
+    <script>
+
+
+
+        function openWhatsApp() {
+            const number = "+12098890576";
+            const message = "Hi, I need crypto recovery help";
+
+            const url = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
+
+            window.open(url, "_blank");
+        }
+
+        function openForm() {
+            const modal = document.getElementById("leadModal");
+            modal.classList.remove("hidden");
+            modal.classList.add("flex");
+        }
+
+        function closeForm() {
+            const modal = document.getElementById("leadModal");
+            modal.classList.add("hidden");
+            modal.classList.remove("flex");
+        }
+
+
+        const btn = document.getElementById("menuBtn")
+        const menu = document.getElementById("mobileMenu")
+
+        btn.onclick = () => {
+            menu.classList.toggle("hidden")
+        }
+
+    </script>
+
 </body>
 
 </html>
