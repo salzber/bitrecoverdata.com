@@ -37,3 +37,42 @@
     }
 
 }
+
+/* FORM UI IMPROVEMENT */
+#leadModal input,
+#leadModal select,
+#leadModal textarea {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    transition: 0.2s;
+}
+
+#leadModal input:focus,
+#leadModal select:focus,
+#leadModal textarea:focus {
+    border-color: #f59e0b;
+    outline: none;
+    background: #fff;
+}
+
+/* MOBILE FIX */
+@media (max-width: 640px) {
+
+    #leadModal {
+        padding: 15px;
+        align-items: flex-start;
+        overflow-y: auto;
+    }
+
+    #leadModal > div {
+        margin-top: 30px;
+        margin-bottom: 30px;
+        padding: 18px;
+    }
+
+    /* stack first-last name on mobile */
+    #leadModal .grid-cols-2 {
+        grid-template-columns: 1fr;
+    }
+
+}

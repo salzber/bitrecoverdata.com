@@ -25,7 +25,7 @@
         }
     </style>
 
-        <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="index.css">
     <script src="//code.jivosite.com/widget/C5T3VmwYw6" async></script>
 
 
@@ -44,35 +44,65 @@
             <button onclick="closeForm()" class="absolute top-3 right-4 text-xl font-bold">✖</button>
 
             <h2 class="text-2xl font-bold mb-2 text-center">Start Your Recovery</h2>
+            <div id="formMessage" class="hidden text-center py-3 rounded-lg font-semibold"></div>
             <p class="text-center text-gray-500 mb-6">Fill the form or contact via WhatsApp</p>
 
             <!-- FORM -->
-            <form action="https://formspree.io/f/xojkergr" method="POST" class="space-y-4">
+            <form class="space-y-4" onsubmit="submitForm(event)">
 
-                <input type="text" name="name" placeholder="Full Name" required class="w-full border p-3 rounded-lg">
+                <!-- NAME -->
+                <div class="grid grid-cols-2 gap-3">
+                    <input type="text" name="first_name" placeholder="First Name *" required
+                        class="w-full border p-3 rounded-lg">
+                    <input type="text" name="last_name" placeholder="Last Name *" required
+                        class="w-full border p-3 rounded-lg">
+                </div>
 
-                <input type="email" name="email" placeholder="Email Address" required
+                <!-- EMAIL -->
+                <input type="email" name="email" placeholder="Email Address *" required
                     class="w-full border p-3 rounded-lg">
 
-                <input type="tel" name="phone" placeholder="Phone Number" required class="w-full border p-3 rounded-lg">
+                <!-- WALLET -->
+                <input type="text" name="wallet" placeholder="Exchange / Wallet Platform (e.g. Binance, MetaMask)"
+                    class="w-full border p-3 rounded-lg">
 
-                <select name="wallet" class="w-full border p-3 rounded-lg">
-                    <option>Select Wallet Type</option>
-                    <option>MetaMask</option>
-                    <option>Ledger</option>
-                    <option>Trezor</option>
+                <!-- ISSUE TYPE -->
+                <select name="issue_type" required class="w-full border p-3 rounded-lg">
+                    <option value="">Select your issue</option>
+                    <option>Wallet Access / Lost Password</option>
+                    <option>Pending / Failed Transaction</option>
+                    <option>Withdrawal Not Received</option>
+                    <option>Deposit Not Credited</option>
+                    <option>Account Locked / Frozen</option>
+                    <option>Unauthorized Access / Hacked Account</option>
+                    <option>Staking / Rewards Issue</option>
+                    <option>Billing / Fee Dispute</option>
+                    <option>KYC / Verification Problem</option>
+                    <option>Tax Statement / Trade History</option>
                     <option>Other</option>
                 </select>
 
-                <textarea name="message" placeholder="Describe your issue..." rows="4"
+                <!-- MESSAGE -->
+                <textarea name="message" rows="4" placeholder="Describe your issue..."
                     class="w-full border p-3 rounded-lg"></textarea>
 
+                <!-- CHECKBOXES -->
+                <div class="text-sm space-y-2 text-gray-600">
+
+                    <label class="flex items-start gap-2">
+                        <input type="checkbox" required>
+                        <span>I agree to the Terms of Service and Privacy Policy.</span>
+                    </label>
+
+
+                </div>
+
+                <!-- SUBMIT -->
                 <button type="submit" class="w-full gradient-btn text-white py-3 rounded-lg font-bold text-lg">
-                    Submit Request 🚀
+                    Connect to Specialist 🚀
                 </button>
 
             </form>
-
             <!-- DIVIDER -->
             <div class="flex items-center my-6">
                 <div class="flex-1 h-px bg-gray-300"></div>
@@ -436,40 +466,7 @@
 
 
 
-    <script>
-
-
-
-        function openWhatsApp() {
-            const number = "+12098890576";
-            const message = "Hi, I need crypto recovery help";
-
-            const url = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
-
-            window.open(url, "_blank");
-        }
-
-        function openForm() {
-            const modal = document.getElementById("leadModal");
-            modal.classList.remove("hidden");
-            modal.classList.add("flex");
-        }
-
-        function closeForm() {
-            const modal = document.getElementById("leadModal");
-            modal.classList.add("hidden");
-            modal.classList.remove("flex");
-        }
-
-
-        const btn = document.getElementById("menuBtn")
-        const menu = document.getElementById("mobileMenu")
-
-        btn.onclick = () => {
-            menu.classList.toggle("hidden")
-        }
-
-    </script>
+   <script src="index.js"></script>
 
 </body>
 
