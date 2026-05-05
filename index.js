@@ -15,7 +15,10 @@ async function submitForm(e) {
         message: document.querySelector('[name="message"]').value
     };
 
+
+    console.log(data.phone);
     
+
     try {
         const res = await fetch("https://zbuogldftjvfixhrgiir.supabase.co/rest/v1/bitsrecover", {
             method: "POST",
