@@ -15,24 +15,7 @@ async function submitForm(e) {
         message: document.querySelector('[name="message"]').value
     };
 
-
-    const phone = document.querySelector('[name="phone"]').value;
-
-    // allow +, spaces, numbers (7–15 digits total)
-    const phoneRegex = /^[+]?[\d\s]{7,15}$/;
-
-    if (!phoneRegex.test(phone)) {
-        msgBox.innerText = "❌ Enter valid phone number (with country code)";
-        msgBox.className = "bg-red-100 text-red-700 py-3 rounded-lg text-center font-semibold";
-        msgBox.classList.remove("hidden");
-
-        setTimeout(()=>{
-        msgBox.classList.add("hidden");
-
-        },3000)
-        return;
-    }
-
+    
     try {
         const res = await fetch("https://zbuogldftjvfixhrgiir.supabase.co/rest/v1/bitsrecover", {
             method: "POST",
