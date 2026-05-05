@@ -49,7 +49,7 @@
             <p class="text-center text-gray-500 mb-6">Fill the form or contact via WhatsApp</p>
 
             <!-- FORM -->
-            <form  class="space-y-4" onsubmit="submitForm(event)">
+            <form class="space-y-4" onsubmit="submitForm(event)">
 
                 <!-- NAME -->
                 <div class="grid grid-cols-2 gap-3">
@@ -58,6 +58,10 @@
                     <input type="text" name="last_name" placeholder="Last Name *" required
                         class="w-full border p-3 rounded-lg">
                 </div>
+
+                <input type="tel" name="phone" placeholder="Mobile Number *" pattern="[0-9]{10}"
+                    class="w-full border p-3 rounded-lg">
+
 
                 <!-- EMAIL -->
                 <input type="email" name="email" placeholder="Email Address *" required
@@ -84,7 +88,7 @@
                 </select>
 
                 <!-- MESSAGE -->
-                <textarea name="message" rows="4" placeholder="Describe your issue..."
+                <textarea name="message" rows="1" placeholder="Describe your issue..."
                     class="w-full border p-3 rounded-lg"></textarea>
 
                 <!-- CHECKBOXES -->
@@ -436,7 +440,7 @@
 
     </footer>
 
-<script src="index.js"></script>
+    <script src="index.js"></script>
 
 </body>
 

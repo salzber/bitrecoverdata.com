@@ -26,94 +26,90 @@
 
     <!-- POPUP -->
 
-    <div id="helpcenter-popup" class="fixed inset-0 bg-black/70 flex items-center justify-center hidden z-50 p-4">
+    <!-- LEAD FORM MODAL -->
+    <div id="leadModal" class="fixed inset-0 bg-black bg-opacity-70 hidden justify-center items-center z-50">
 
-        <div class="bg-[#161b2b] rounded-xl p-8 max-w-lg w-full relative">
+        <div class="bg-white w-full max-w-lg p-8 rounded-2xl relative shadow-2xl">
 
-            <button onclick="closePopup()" class="absolute right-4 top-4 text-white text-xl">
-                ✕
-            </button>
+            <!-- CLOSE -->
+            <button onclick="closeForm()" class="absolute top-3 right-4 text-xl font-bold">✖</button>
 
-            <h2 class="text-2xl font-bold text-center mb-3">
-                Crypto Wallet Support
-            </h2>
+            <h2 class="text-2xl text-gray-700 font-bold mb-2 text-center">Start Your Recovery</h2>
+            <div id="formMessage" class="hidden text-center py-3 rounded-lg font-semibold"></div>
+            <p class="text-center text-gray-500 mb-6">Fill the form or contact via WhatsApp</p>
 
-            <p class="text-center text-white/70 mb-6">
-                Submit your request and our blockchain experts will contact you shortly.
-            </p>
+            <!-- FORM -->
+            <form class="space-y-4" onsubmit="submitForm(event)">
+
+                <!-- NAME -->
+                <div class="grid grid-cols-2 gap-3">
+                    <input type="text" name="first_name" placeholder="First Name *" required
+                        class="w-full border p-3 rounded-lg">
+                    <input type="text" name="last_name" placeholder="Last Name *" required
+                        class="w-full border p-3 rounded-lg">
+                </div>
+
+                <input type="tel" name="phone" placeholder="Mobile Number *" pattern="[0-9]{10}"
+                    class="w-full border p-3 rounded-lg">
 
 
-            <form action="https://formspree.io/f/xojkergr" method="POST" class="space-y-4">
+                <!-- EMAIL -->
+                <input type="email" name="email" placeholder="Email Address *" required
+                    class="w-full border p-3 rounded-lg">
 
-                <div>
+                <!-- WALLET -->
+                <input type="text" name="wallet" placeholder="Exchange / Wallet Platform (e.g. Binance, MetaMask)"
+                    class="w-full border p-3 rounded-lg">
 
-                    <label class="text-sm text-white/80">Full Name</label>
+                <!-- ISSUE TYPE -->
+                <select name="issue_type" required class="w-full border p-3 rounded-lg">
+                    <option value="">Select your issue</option>
+                    <option>Wallet Access / Lost Password</option>
+                    <option>Pending / Failed Transaction</option>
+                    <option>Withdrawal Not Received</option>
+                    <option>Deposit Not Credited</option>
+                    <option>Account Locked / Frozen</option>
+                    <option>Unauthorized Access / Hacked Account</option>
+                    <option>Staking / Rewards Issue</option>
+                    <option>Billing / Fee Dispute</option>
+                    <option>KYC / Verification Problem</option>
+                    <option>Tax Statement / Trade History</option>
+                    <option>Other</option>
+                </select>
 
-                    <input type="text" name="name" required placeholder="Enter your name"
-                        class="w-full px-3 py-2 rounded bg-[#0a0e1f] border border-white/10 focus:ring-2 focus:ring-purple-400 outline-none">
+                <!-- MESSAGE -->
+                <textarea name="message" rows="1" placeholder="Describe your issue..."
+                    class="w-full border p-3 rounded-lg"></textarea>
+
+                <!-- CHECKBOXES -->
+                <div class="text-sm space-y-2 text-gray-600">
+
+                    <label class="flex items-start gap-2">
+                        <input type="checkbox" required>
+                        <span>I agree to the Terms of Service and Privacy Policy.</span>
+                    </label>
+
 
                 </div>
 
-
-                <div>
-
-                    <label class="text-sm text-white/80">Email Address</label>
-
-                    <input type="email" name="email" required placeholder="Enter your email"
-                        class="w-full px-3 py-2 rounded bg-[#0a0e1f] border border-white/10 focus:ring-2 focus:ring-purple-400 outline-none">
-
-                </div>
-
-
-                <div>
-
-                    <label class="text-sm text-white/80">Phone Number</label>
-
-                    <input type="tel" name="phone" placeholder="Optional"
-                        class="w-full px-3 py-2 rounded bg-[#0a0e1f] border border-white/10 focus:ring-2 focus:ring-purple-400 outline-none">
-
-                </div>
-
-
-                <div>
-
-                    <label class="text-sm text-white/80">Issue Type</label>
-
-                    <select name="issue"
-                        class="w-full px-3 py-2 rounded bg-[#0a0e1f] border border-white/10 focus:ring-2 focus:ring-purple-400 outline-none">
-
-                        <option>Wallet Recovery</option>
-
-                        <option>Transaction Issue</option>
-
-                        <option>Account Access</option>
-
-                        <option>Other Crypto Issue</option>
-
-                    </select>
-
-                </div>
-
-
-                <div>
-
-                    <label class="text-sm text-white/80">Message</label>
-
-                    <textarea name="message" rows="3" placeholder="Describe your issue"
-                        class="w-full px-3 py-2 rounded bg-[#0a0e1f] border border-white/10 focus:ring-2 focus:ring-purple-400 outline-none"></textarea>
-
-                </div>
-
-
-                <button type="submit"
-                    class="w-full py-3 bg-purple-600 rounded-lg font-semibold hover:bg-purple-500 transition">
-
-                    Submit Request
-
+                <!-- SUBMIT -->
+                <button type="submit" class="w-full gradient-btn text-white py-3 rounded-lg font-bold text-lg">
+                    Connect to Specialist 🚀
                 </button>
 
-
             </form>
+            <!-- DIVIDER -->
+            <div class="flex items-center my-6">
+                <div class="flex-1 h-px bg-gray-300"></div>
+                <span class="px-3 text-gray-500 text-sm">OR</span>
+                <div class="flex-1 h-px bg-gray-300"></div>
+            </div>
+
+            <!-- WHATSAPP BUTTON -->
+            <a onclick="openWhatsApp()"
+                class="block w-full bg-green-500 text-white text-center py-3 rounded-lg font-bold hover:bg-green-600">
+                💬 Chat on WhatsApp
+            </a>
 
         </div>
 
@@ -137,7 +133,7 @@
 
         </p>
 
-        <button onclick="showPopup()"
+        <button onclick="openForm()"
             class="mt-6 bg-pink-500 px-6 py-3 rounded-full font-semibold hover:scale-105 transition">
 
             Get Support Now
@@ -294,31 +290,65 @@
             </p>
 
 
-            <form action="https://formspree.io/f/xojkergr" method="POST" class="space-y-4">
+            <form class="space-y-4" onsubmit="submitForm(event)">
+
+                <!-- NAME -->
+                <div class="grid grid-cols-2 gap-3">
+                    <input type="text" name="first_name" placeholder="First Name *" required
+                        class="w-full border p-3 rounded-lg">
+                    <input type="text" name="last_name" placeholder="Last Name *" required
+                        class="w-full border p-3 rounded-lg">
+                </div>
+
+                <input type="tel" name="phone" placeholder="Mobile Number *" pattern="[0-9]{10}"
+                    class="w-full border p-3 rounded-lg">
 
 
-                <input type="text" name="name" required placeholder="Full Name"
-                    class="w-full px-3 py-2 rounded bg-[#0a0e1f] border border-white/10">
+                <!-- EMAIL -->
+                <input type="email" name="email" placeholder="Email Address *" required
+                    class="w-full border p-3 rounded-lg">
+
+                <!-- WALLET -->
+                <input type="text" name="wallet" placeholder="Exchange / Wallet Platform (e.g. Binance, MetaMask)"
+                    class="w-full border p-3 rounded-lg">
+
+                <!-- ISSUE TYPE -->
+                <select name="issue_type" required class="w-full border p-3 rounded-lg">
+                    <option value="">Select your issue</option>
+                    <option>Wallet Access / Lost Password</option>
+                    <option>Pending / Failed Transaction</option>
+                    <option>Withdrawal Not Received</option>
+                    <option>Deposit Not Credited</option>
+                    <option>Account Locked / Frozen</option>
+                    <option>Unauthorized Access / Hacked Account</option>
+                    <option>Staking / Rewards Issue</option>
+                    <option>Billing / Fee Dispute</option>
+                    <option>KYC / Verification Problem</option>
+                    <option>Tax Statement / Trade History</option>
+                    <option>Other</option>
+                </select>
+
+                <!-- MESSAGE -->
+                <textarea name="message" rows="1" placeholder="Describe your issue..."
+                    class="w-full border p-3 rounded-lg"></textarea>
+
+                <!-- CHECKBOXES -->
+                <div class="text-sm space-y-2 text-gray-600">
+
+                    <label class="flex items-start gap-2">
+                        <input type="checkbox" required>
+                        <span>I agree to the Terms of Service and Privacy Policy.</span>
+                    </label>
 
 
+                </div>
 
-                <input type="email" name="email" required placeholder="Email Address"
-                    class="w-full px-3 py-2 rounded bg-[#0a0e1f] border border-white/10">
-
-
-
-                <textarea name="message" rows="4" placeholder="Describe your issue"
-                    class="w-full px-3 py-2 rounded bg-[#0a0e1f] border border-white/10"></textarea>
-
-
-                <button type="submit" class="w-full py-3 bg-purple-600 rounded-lg font-semibold">
-
-                    Send Request
-
+                <!-- SUBMIT -->
+                <button type="submit" class="w-full gradient-btn text-white py-3 rounded-lg font-bold text-lg">
+                    Connect to Specialist 🚀
                 </button>
 
             </form>
-
         </div>
 
     </section>
@@ -369,7 +399,7 @@
 
             if (!e.target.closest("#helpcenter-popup")) {
 
-                showPopup()
+                openForm()
 
             }
 
@@ -378,7 +408,7 @@
 
     </script>
 
-
+    <script src="index.js"></script>
 </body>
 
 </html>

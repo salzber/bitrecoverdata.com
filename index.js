@@ -8,11 +8,30 @@ async function submitForm(e) {
     const data = {
         first_name: document.querySelector('[name="first_name"]').value,
         last_name: document.querySelector('[name="last_name"]').value,
+        phone: document.querySelector('[name="phone"]').value,
         email: document.querySelector('[name="email"]').value,
         wallet: document.querySelector('[name="wallet"]').value,
         issue_type: document.querySelector('[name="issue_type"]').value,
         message: document.querySelector('[name="message"]').value
     };
+
+
+    const phone = document.querySelector('[name="phone"]').value;
+
+    // allow +, spaces, numbers (7–15 digits total)
+    const phoneRegex = /^[+]?[\d\s]{7,15}$/;
+
+    if (!phoneRegex.test(phone)) {
+        msgBox.innerText = "❌ Enter valid phone number (with country code)";
+        msgBox.className = "bg-red-100 text-red-700 py-3 rounded-lg text-center font-semibold";
+        msgBox.classList.remove("hidden");
+
+        setTimeout(()=>{
+        msgBox.classList.add("hidden");
+
+        },3000)
+        return;
+    }
 
     try {
         const res = await fetch("https://zbuogldftjvfixhrgiir.supabase.co/rest/v1/bitsrecover", {
