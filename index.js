@@ -60,7 +60,7 @@ async function submitForm(e) {
     }
 }
 function openWhatsApp() {
-    const number = "+12098890576";
+    const number = "+18663817925";
     const message = "Hi, I need crypto recovery help";
 
     const url = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
