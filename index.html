@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
@@ -8,11 +9,12 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&display=swap"
+        rel="stylesheet" />
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-<!-- Tailwind CSS via CDN -->
+    <!-- Tailwind CSS via CDN -->
     <script src="https://cdn.tailwindcss.com">
     </script>
     <!-- JivoChat -->
@@ -296,13 +298,16 @@
         ::-webkit-scrollbar {
             width: 8px;
         }
+
         ::-webkit-scrollbar-track {
             background: #0d0d0d;
         }
+
         ::-webkit-scrollbar-thumb {
             background: #c38a36;
             border-radius: 4px;
         }
+
         ::-webkit-scrollbar-thumb:hover {
             background: #a06d2a;
         }
@@ -316,37 +321,217 @@
 
 <body>
 
+    <!-- ====== LEAD FORM MODAL - REDESIGNED ====== -->
+    <div id="leadModal"
+        class="fixed inset-0 bg-black/80 backdrop-blur-sm hidden justify-center items-center z-[9999] p-4">
+        <div
+            class="bg-[#1a1a1a] w-full max-w-lg rounded-2xl relative shadow-2xl border border-[#2a2a2a] max-h-[95vh] overflow-y-auto">
+
+            <!-- CLOSE BUTTON -->
+            <button onclick="closeForm()"
+                class="absolute top-4 right-4 w-10 h-10 rounded-full bg-[#2a2a2a] hover:bg-[#3a3a3a] text-gray-400 hover:text-white text-xl font-bold transition flex items-center justify-center z-10">
+                ✕
+            </button>
+
+            <!-- HEADER -->
+            <div class="p-6 pb-2 text-center border-b border-[#2a2a2a]">
+                <div class="flex justify-center mb-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 100 100">
+                        <path d="M50 5 L10 20 L10 60 C10 80 30 90 50 95 C70 90 90 80 90 60 L90 20 Z" fill="none"
+                            stroke="#c38a36" stroke-width="4" stroke-linejoin="round" />
+                        <circle cx="50" cy="50" r="25" fill="none" stroke="#6a6a6a" stroke-width="1.5"
+                            stroke-dasharray="3 3" />
+                        <line x1="50" y1="20" x2="50" y2="80" stroke="#ffffff" stroke-width="3"
+                            stroke-linecap="round" />
+                        <line x1="40" y1="80" x2="60" y2="80" stroke="#ffffff" stroke-width="3"
+                            stroke-linecap="round" />
+                        <line x1="45" y1="74" x2="55" y2="74" stroke="#ffffff" stroke-width="3"
+                            stroke-linecap="round" />
+                        <circle cx="50" cy="28" r="3" fill="#c38a36" />
+                        <line x1="25" y1="35" x2="75" y2="35" stroke="#c38a36" stroke-width="3"
+                            stroke-linecap="round" />
+                        <path d="M25 35 L15 55 M25 35 L35 55" stroke="#7a7a7a" stroke-width="2" />
+                        <path d="M13 55 Q25 65 37 55" fill="none" stroke="#c38a36" stroke-width="3"
+                            stroke-linecap="round" />
+                        <path d="M75 35 L65 55 M75 35 L85 55" stroke="#7a7a7a" stroke-width="2" />
+                        <path d="M63 55 Q75 65 87 55" fill="none" stroke="#c38a36" stroke-width="3"
+                            stroke-linecap="round" />
+                    </svg>
+                </div>
+                <h2 class="text-2xl md:text-3xl font-bold text-white">Start Your Recovery</h2>
+                <p class="text-gray-400 text-sm mt-1">Fill the form or contact us directly</p>
+            </div>
+
+            <!-- FORM MESSAGE -->
+            <div id="formMessage" class="hidden mx-6 mt-4 text-center py-3 rounded-lg font-semibold"></div>
+
+            <!-- FORM BODY -->
+            <div class="p-6">
+                <form class="space-y-4" onsubmit="submitForm(event)">
+                    <!-- NAME - 2 COLUMN -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-gray-400 text-xs font-semibold uppercase tracking-wider mb-1">First
+                                Name *</label>
+                            <input type="text" name="first_name" placeholder="John" required
+                                class="w-full bg-[#0d0d0d] border border-[#2a2a2a] text-white placeholder-gray-500 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#c38a36] focus:border-transparent transition">
+                        </div>
+                        <div>
+                            <label class="block text-gray-400 text-xs font-semibold uppercase tracking-wider mb-1">Last
+                                Name *</label>
+                            <input type="text" name="last_name" placeholder="Doe" required
+                                class="w-full bg-[#0d0d0d] border border-[#2a2a2a] text-white placeholder-gray-500 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#c38a36] focus:border-transparent transition">
+                        </div>
+                    </div>
+
+                    <!-- PHONE -->
+                    <div>
+                        <label class="block text-gray-400 text-xs font-semibold uppercase tracking-wider mb-1">Mobile
+                            Number *</label>
+                        <input type="tel" name="phone" placeholder="+1 (555) 000-0000" required
+                            class="w-full bg-[#0d0d0d] border border-[#2a2a2a] text-white placeholder-gray-500 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#c38a36] focus:border-transparent transition">
+                    </div>
+
+                    <!-- EMAIL -->
+                    <div>
+                        <label class="block text-gray-400 text-xs font-semibold uppercase tracking-wider mb-1">Email
+                            Address *</label>
+                        <input type="email" name="email" placeholder="you@example.com" required
+                            class="w-full bg-[#0d0d0d] border border-[#2a2a2a] text-white placeholder-gray-500 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#c38a36] focus:border-transparent transition">
+                    </div>
+
+                    <!-- WALLET -->
+                    <div>
+                        <label class="block text-gray-400 text-xs font-semibold uppercase tracking-wider mb-1">Exchange
+                            / Wallet Platform</label>
+                        <input type="text" name="wallet" placeholder="e.g. Binance, MetaMask, Ledger"
+                            class="w-full bg-[#0d0d0d] border border-[#2a2a2a] text-white placeholder-gray-500 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#c38a36] focus:border-transparent transition">
+                    </div>
+
+                    <!-- ISSUE TYPE - DROPDOWN (FIXED VISIBILITY) -->
+                    <div>
+                        <label class="block text-gray-400 text-xs font-semibold uppercase tracking-wider mb-1">Issue
+                            Type *</label>
+                        <select name="issue_type" required
+                            class="w-full bg-[#0d0d0d] border border-[#2a2a2a] text-white p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#c38a36] focus:border-transparent transition appearance-none cursor-pointer"
+                            style="color: #e8e8e8; background-repeat: no-repeat;
+                            background-position: right 12px center; background-size: 16px;">
+                            <option value="" class="text-gray-500">Select your issue</option>
+                            <option value="Wallet Access / Lost Password" class="text-white">🔑 Wallet Access / Lost
+                                Password</option>
+                            <option value="Pending / Failed Transaction" class="text-white">⏳ Pending / Failed
+                                Transaction</option>
+                            <option value="Withdrawal Not Received" class="text-white">📤 Withdrawal Not Received
+                            </option>
+                            <option value="Deposit Not Credited" class="text-white">📥 Deposit Not Credited</option>
+                            <option value="Account Locked / Frozen" class="text-white">🔒 Account Locked / Frozen
+                            </option>
+                            <option value="Unauthorized Access / Hacked Account" class="text-white">⚠️ Unauthorized
+                                Access / Hacked</option>
+                            <option value="Staking / Rewards Issue" class="text-white">💰 Staking / Rewards Issue
+                            </option>
+                            <option value="Billing / Fee Dispute" class="text-white">💳 Billing / Fee Dispute</option>
+                            <option value="KYC / Verification Problem" class="text-white">🪪 KYC / Verification Problem
+                            </option>
+                            <option value="Tax Statement / Trade History" class="text-white">📊 Tax Statement / Trade
+                                History</option>
+                            <option value="Other" class="text-white">📌 Other</option>
+                        </select>
+                    </div>
+
+                    <!-- MESSAGE -->
+                    <div>
+                        <label class="block text-gray-400 text-xs font-semibold uppercase tracking-wider mb-1">Describe
+                            Your Issue</label>
+                        <textarea name="message" rows="2" placeholder="Briefly describe what happened..."
+                            class="w-full bg-[#0d0d0d] border border-[#2a2a2a] text-white placeholder-gray-500 p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#c38a36] focus:border-transparent transition resize-none"></textarea>
+                    </div>
+
+                    <!-- CHECKBOX -->
+                    <div class="text-sm text-gray-400">
+                        <label class="flex items-start gap-3 cursor-pointer">
+                            <input type="checkbox" required
+                                class="mt-1 w-4 h-4 accent-[#c38a36] bg-[#0d0d0d] border-[#2a2a2a] rounded cursor-pointer">
+                            <span>I agree to the <a href="terms.html"
+                                    class="text-[#c38a36] hover:underline font-medium">Terms of Service</a> and <a
+                                    href="privacy.html" class="text-[#c38a36] hover:underline font-medium">Privacy
+                                    Policy</a>.</span>
+                        </label>
+                    </div>
+
+                    <!-- SUBMIT -->
+                    <button type="submit"
+                        class="w-full bg-gradient-to-r from-[#c38a36] to-[#a06d2a] hover:from-[#d4993e] hover:to-[#b87d2e] text-white font-bold text-lg py-3.5 rounded-lg transition shadow-lg shadow-[#c38a36]/20 hover:shadow-[#c38a36]/40">
+                        🚀 Connect to Specialist
+                    </button>
+                </form>
+
+                <!-- DIVIDER -->
+                <div class="flex items-center my-6">
+                    <div class="flex-1 h-px bg-[#2a2a2a]"></div>
+                    <span class="px-4 text-gray-500 text-sm font-semibold">OR</span>
+                    <div class="flex-1 h-px bg-[#2a2a2a]"></div>
+                </div>
+
+                <!-- WHATSAPP BUTTON -->
+                <button onclick="openWhatsApp()"
+                    class="w-full bg-[#25D366] hover:bg-[#1da851] text-white font-bold py-3.5 rounded-lg transition shadow-lg shadow-[#25D366]/20 hover:shadow-[#25D366]/40 flex items-center justify-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="currentColor">
+                        <path
+                            d="M20.52 3.48A11.86 11.86 0 0 0 12.06 0C5.56 0 .25 5.3.25 11.82c0 2.08.54 4.11 1.56 5.9L0 24l6.45-1.69a11.8 11.8 0 0 0 5.61 1.43h.01c6.5 0 11.81-5.3 11.81-11.82a11.7 11.7 0 0 0-3.36-8.44zM12.07 21.7a9.83 9.83 0 0 1-5.01-1.37l-.36-.22-3.83 1 1.02-3.74-.24-.39a9.81 9.81 0 0 1-1.5-5.16c0-5.45 4.44-9.89 9.92-9.89 2.65 0 5.14 1.03 7.01 2.9a9.82 9.82 0 0 1 2.9 6.99c0 5.46-4.45 9.89-9.91 9.89zm5.43-7.42c-.3-.15-1.78-.88-2.06-.97-.28-.1-.48-.15-.68.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.08-.3-.15-1.26-.46-2.4-1.46a8.98 8.98 0 0 1-1.66-2.06c-.17-.3-.02-.47.13-.62.13-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.68-1.64-.94-2.25-.24-.58-.48-.5-.68-.51h-.58c-.2 0-.52.08-.8.38-.27.3-1.05 1.03-1.05 2.5 0 1.48 1.07 2.9 1.22 3.1.15.2 2.09 3.2 5.07 4.48.71.3 1.26.48 1.69.62.71.23 1.35.2 1.85.12.56-.08 1.78-.73 2.03-1.43.25-.7.25-1.3.17-1.42-.08-.12-.28-.2-.58-.35z" />
+                    </svg>
+                    💬 Chat on WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+
     <!-- ====== NAVBAR ====== -->
     <nav class="sticky top-0 z-[1000] bg-[#0d0d0d]/95 backdrop-blur-lg border-b border-[#2a2a2a] shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20 md:h-24">
-  <div class="logo" style="display: flex; align-items: center; gap: 12px; cursor: pointer;">
-                    
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" style="height: 52px; width: auto; filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.5));">
-                        
-                        <path d="M50 5 L10 20 L10 60 C10 80 30 90 50 95 C70 90 90 80 90 60 L90 20 Z" fill="none" stroke="#c38a36" stroke-width="4" stroke-linejoin="round"/>
-                        
-                        <circle cx="50" cy="50" r="25" fill="none" stroke="#6a6a6a" stroke-width="1.5" stroke-dasharray="3 3"/>
-                        
-                        <line x1="50" y1="20" x2="50" y2="80" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
-                        <line x1="40" y1="80" x2="60" y2="80" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
-                        <line x1="45" y1="74" x2="55" y2="74" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
-                        
-                        <circle cx="50" cy="28" r="3" fill="#c38a36"/>
-                        
-                        <line x1="25" y1="35" x2="75" y2="35" stroke="#c38a36" stroke-width="3" stroke-linecap="round"/>
-                        
-                        <path d="M25 35 L15 55 M25 35 L35 55" stroke="#7a7a7a" stroke-width="2"/>
-                        <path d="M13 55 Q25 65 37 55" fill="none" stroke="#c38a36" stroke-width="3" stroke-linecap="round"/>
-                        
-                        <path d="M75 35 L65 55 M75 35 L85 55" stroke="#7a7a7a" stroke-width="2"/>
-                        <path d="M63 55 Q75 65 87 55" fill="none" stroke="#c38a36" stroke-width="3" stroke-linecap="round"/>
+                <div class="logo" style="display: flex; align-items: center; gap: 12px; cursor: pointer;">
+
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"
+                        style="height: 52px; width: auto; filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.5));">
+
+                        <path d="M50 5 L10 20 L10 60 C10 80 30 90 50 95 C70 90 90 80 90 60 L90 20 Z" fill="none"
+                            stroke="#c38a36" stroke-width="4" stroke-linejoin="round" />
+
+                        <circle cx="50" cy="50" r="25" fill="none" stroke="#6a6a6a" stroke-width="1.5"
+                            stroke-dasharray="3 3" />
+
+                        <line x1="50" y1="20" x2="50" y2="80" stroke="#ffffff" stroke-width="3"
+                            stroke-linecap="round" />
+                        <line x1="40" y1="80" x2="60" y2="80" stroke="#ffffff" stroke-width="3"
+                            stroke-linecap="round" />
+                        <line x1="45" y1="74" x2="55" y2="74" stroke="#ffffff" stroke-width="3"
+                            stroke-linecap="round" />
+
+                        <circle cx="50" cy="28" r="3" fill="#c38a36" />
+
+                        <line x1="25" y1="35" x2="75" y2="35" stroke="#c38a36" stroke-width="3"
+                            stroke-linecap="round" />
+
+                        <path d="M25 35 L15 55 M25 35 L35 55" stroke="#7a7a7a" stroke-width="2" />
+                        <path d="M13 55 Q25 65 37 55" fill="none" stroke="#c38a36" stroke-width="3"
+                            stroke-linecap="round" />
+
+                        <path d="M75 35 L65 55 M75 35 L85 55" stroke="#7a7a7a" stroke-width="2" />
+                        <path d="M63 55 Q75 65 87 55" fill="none" stroke="#c38a36" stroke-width="3"
+                            stroke-linecap="round" />
                     </svg>
 
                     <span style="display: flex; flex-direction: column; justify-content: center;">
-                        <span style="font-weight: 300; color: #7a7a7a; font-size: 0.9em; line-height: 1; letter-spacing: 1px;">LEGAL</span>
-                        <span style="font-weight: 800; color: #ffffff; font-size: 1.5em; line-height: 1; margin: 1px 0; letter-spacing: -0.5px;">Intelligence</span>
-                        <span style="font-weight: 500; color: #c38a36; font-size: 0.8em; line-height: 1; letter-spacing: 2px;">UNIT</span>
+                        <span
+                            style="font-weight: 300; color: #7a7a7a; font-size: 0.9em; line-height: 1; letter-spacing: 1px;">LEGAL</span>
+                        <span
+                            style="font-weight: 800; color: #ffffff; font-size: 1.5em; line-height: 1; margin: 1px 0; letter-spacing: -0.5px;">Intelligence</span>
+                        <span
+                            style="font-weight: 500; color: #c38a36; font-size: 0.8em; line-height: 1; letter-spacing: 2px;">UNIT</span>
                     </span>
                 </div>
                 <!-- Desktop Nav -->
@@ -364,7 +549,8 @@
                 </ul>
 
                 <!-- Mobile toggle -->
-                <button id="menuToggle" class="md:hidden text-2xl text-white focus:outline-none" aria-label="Toggle menu">
+                <button id="menuToggle" class="md:hidden text-2xl text-white focus:outline-none"
+                    aria-label="Toggle menu">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
@@ -396,7 +582,8 @@
             <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-10">
                 <!-- Left: text -->
                 <div class="md:max-w-2xl">
-                    <div class="inline-flex items-center gap-2 bg-[#1a1a1a] text-[#c38a36] text-xs font-semibold px-4 py-1.5 rounded-full border border-[#c38a36]/20 mb-5">
+                    <div
+                        class="inline-flex items-center gap-2 bg-[#1a1a1a] text-[#c38a36] text-xs font-semibold px-4 py-1.5 rounded-full border border-[#c38a36]/20 mb-5">
                         <i class="fas fa-bolt text-[#c38a36]"></i>
                         Lost Access To Your Crypto? We Can Recover It
                     </div>
@@ -404,7 +591,8 @@
                         Recover Lost <br /><span class="gradient-text">Bitcoin, Ethereum &amp; More</span>
                     </h1>
                     <p class="mt-4 text-lg text-[#9a9a9a] max-w-xl leading-relaxed">
-                        Recover lost Bitcoin, Ethereum, Dogecoin, XRP, damaged wallets, forgotten passwords and more with our expert crypto recovery specialists.
+                        Recover lost Bitcoin, Ethereum, Dogecoin, XRP, damaged wallets, forgotten passwords and more
+                        with our expert crypto recovery specialists.
                     </p>
 
                     <!-- Stats -->
@@ -428,7 +616,8 @@
                         <a href="tel:+18663817925" class="btn-primary">
                             <i class="fas fa-phone"></i> Call +1-866-381-7925
                         </a>
-                        <a href="cases.html" class="inline-flex items-center gap-2 text-[#c38a36] font-semibold hover:text-[#e8c84c] transition">
+                        <a href="cases.html"
+                            class="inline-flex items-center gap-2 text-[#c38a36] font-semibold hover:text-[#e8c84c] transition">
                             View Cases <i class="fas fa-arrow-right text-xs"></i>
                         </a>
                     </div>
@@ -438,7 +627,8 @@
                 <div class="flex-shrink-0">
                     <div class="glass-card rounded-3xl p-6 shadow-xl border border-white/5 max-w-xs mx-auto md:mx-0">
                         <div class="flex items-center gap-4 mb-4">
-                            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#c38a36] to-[#8a6d20] flex items-center justify-center text-white text-xl shadow-lg shadow-[#c38a36]/20">
+                            <div
+                                class="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#c38a36] to-[#8a6d20] flex items-center justify-center text-white text-xl shadow-lg shadow-[#c38a36]/20">
                                 <i class="fas fa-gavel"></i>
                             </div>
                             <div>
@@ -448,12 +638,21 @@
                         </div>
                         <div class="h-px bg-[#2a2a2a] my-3"></div>
                         <div class="flex items-center justify-between text-sm">
-                            <span class="text-[#9a9a9a]"><i class="fas fa-check-circle text-[#c38a36] mr-1.5"></i> No Recovery No Fee</span>
-                            <span class="text-[#9a9a9a]"><i class="fas fa-star text-[#c38a36] mr-1.5"></i> 4.9 / 5.0</span>
+                            <span class="text-[#9a9a9a]"><i class="fas fa-check-circle text-[#c38a36] mr-1.5"></i> No
+                                Recovery No Fee</span>
+                            <span class="text-[#9a9a9a]"><i class="fas fa-star text-[#c38a36] mr-1.5"></i> 4.9 /
+                                5.0</span>
                         </div>
-                        <a href="tel:+18663817925" class="mt-4 block text-center bg-[#c38a36] hover:bg-[#a06d2a] text-white text-sm font-semibold py-2.5 rounded-xl transition shadow-md shadow-[#c38a36]/20">
+                        <a href="tel:+18663817925"
+                            class="mt-4 block text-center bg-[#c38a36] hover:bg-[#a06d2a] text-white text-sm font-semibold py-2.5 rounded-xl transition shadow-md shadow-[#c38a36]/20">
                             <i class="fas fa-phone mr-2"></i> Call Now
                         </a>
+
+                          <a onclick="openForm()"
+                            class="mt-4 block text-center bg-[#c38a36] hover:bg-[#a06d2a] text-white text-sm font-semibold py-2.5 rounded-xl transition shadow-md shadow-[#c38a36]/20">
+                            <i class="fas fa-arrow-right mr-2"></i> Get Started
+                        </a>
+                    
                     </div>
                 </div>
             </div>
@@ -463,19 +662,23 @@
     <!-- ====== TRUST BADGES ====== -->
     <div class="max-w-7xl mx-auto px-4 py-10">
         <div class="flex flex-wrap justify-center gap-4 md:gap-8">
-            <div class="trust-badge bg-[#1a1a1a] rounded-2xl px-5 py-3 border border-[#2a2a2a] shadow-sm flex items-center gap-3">
+            <div
+                class="trust-badge bg-[#1a1a1a] rounded-2xl px-5 py-3 border border-[#2a2a2a] shadow-sm flex items-center gap-3">
                 <i class="fas fa-shield-alt text-[#c38a36] text-xl"></i>
                 <span class="font-semibold text-sm text-[#e0e0e0]">Secure Process</span>
             </div>
-            <div class="trust-badge bg-[#1a1a1a] rounded-2xl px-5 py-3 border border-[#2a2a2a] shadow-sm flex items-center gap-3">
+            <div
+                class="trust-badge bg-[#1a1a1a] rounded-2xl px-5 py-3 border border-[#2a2a2a] shadow-sm flex items-center gap-3">
                 <i class="fas fa-coins text-[#c38a36] text-xl"></i>
                 <span class="font-semibold text-sm text-[#e0e0e0]">All Cryptos Supported</span>
             </div>
-            <div class="trust-badge bg-[#1a1a1a] rounded-2xl px-5 py-3 border border-[#2a2a2a] shadow-sm flex items-center gap-3">
+            <div
+                class="trust-badge bg-[#1a1a1a] rounded-2xl px-5 py-3 border border-[#2a2a2a] shadow-sm flex items-center gap-3">
                 <i class="fas fa-bolt text-[#c38a36] text-xl"></i>
                 <span class="font-semibold text-sm text-[#e0e0e0]">Fast Recovery</span>
             </div>
-            <div class="trust-badge bg-[#1a1a1a] rounded-2xl px-5 py-3 border border-[#2a2a2a] shadow-sm flex items-center gap-3">
+            <div
+                class="trust-badge bg-[#1a1a1a] rounded-2xl px-5 py-3 border border-[#2a2a2a] shadow-sm flex items-center gap-3">
                 <i class="fas fa-hand-holding-usd text-[#c38a36] text-xl"></i>
                 <span class="font-semibold text-sm text-[#e0e0e0]">Lowest Fees</span>
             </div>
@@ -512,22 +715,29 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="service-card-dark bg-[#1a1a1a] rounded-2xl p-6 border border-[#2a2a2a] shadow-sm hover:shadow-md transition">
-                <div class="w-12 h-12 rounded-full bg-[#c38a36]/20 flex items-center justify-center text-[#c38a36] text-xl mb-4">
+            <div
+                class="service-card-dark bg-[#1a1a1a] rounded-2xl p-6 border border-[#2a2a2a] shadow-sm hover:shadow-md transition">
+                <div
+                    class="w-12 h-12 rounded-full bg-[#c38a36]/20 flex items-center justify-center text-[#c38a36] text-xl mb-4">
                     <i class="fas fa-key"></i>
                 </div>
                 <h4 class="font-bold text-white text-lg">Lost Password Recovery</h4>
-                <p class="text-sm text-[#9a9a9a] mt-1">Recover forgotten wallet passwords and encrypted wallet files.</p>
+                <p class="text-sm text-[#9a9a9a] mt-1">Recover forgotten wallet passwords and encrypted wallet files.
+                </p>
             </div>
-            <div class="service-card-dark bg-[#1a1a1a] rounded-2xl p-6 border border-[#2a2a2a] shadow-sm hover:shadow-md transition">
-                <div class="w-12 h-12 rounded-full bg-[#c38a36]/20 flex items-center justify-center text-[#c38a36] text-xl mb-4">
+            <div
+                class="service-card-dark bg-[#1a1a1a] rounded-2xl p-6 border border-[#2a2a2a] shadow-sm hover:shadow-md transition">
+                <div
+                    class="w-12 h-12 rounded-full bg-[#c38a36]/20 flex items-center justify-center text-[#c38a36] text-xl mb-4">
                     <i class="fas fa-exchange-alt"></i>
                 </div>
                 <h4 class="font-bold text-white text-lg">Exchange Recovery</h4>
                 <p class="text-sm text-[#9a9a9a] mt-1">Recover funds stuck on exchanges or locked accounts.</p>
             </div>
-            <div class="service-card-dark bg-[#1a1a1a] rounded-2xl p-6 border border-[#2a2a2a] shadow-sm hover:shadow-md transition">
-                <div class="w-12 h-12 rounded-full bg-[#c38a36]/20 flex items-center justify-center text-[#c38a36] text-xl mb-4">
+            <div
+                class="service-card-dark bg-[#1a1a1a] rounded-2xl p-6 border border-[#2a2a2a] shadow-sm hover:shadow-md transition">
+                <div
+                    class="w-12 h-12 rounded-full bg-[#c38a36]/20 flex items-center justify-center text-[#c38a36] text-xl mb-4">
                     <i class="fas fa-microchip"></i>
                 </div>
                 <h4 class="font-bold text-white text-lg">Hardware Wallet Recovery</h4>
@@ -546,7 +756,8 @@
                         <i class="fas fa-user-tie text-[#c38a36] text-xl"></i>
                         <span class="font-semibold text-white">Professional Experts</span>
                     </div>
-                    <p class="text-sm text-[#9a9a9a] mt-1">Experienced blockchain engineers with years of recovery experience.</p>
+                    <p class="text-sm text-[#9a9a9a] mt-1">Experienced blockchain engineers with years of recovery
+                        experience.</p>
                 </div>
                 <div>
                     <div class="flex items-center gap-3">
@@ -564,7 +775,8 @@
                 </div>
             </div>
             <p class="text-[#9a9a9a] leading-relaxed mt-6">
-                <strong class="text-white">Ready to recover your crypto?</strong> Call us now at <strong class="text-[#c38a36]">+1-866-381-7925</strong> for a confidential, no‑obligation case evaluation.
+                <strong class="text-white">Ready to recover your crypto?</strong> Call us now at <strong
+                    class="text-[#c38a36]">+1-866-381-7925</strong> for a confidential, no‑obligation case evaluation.
             </p>
         </div>
     </div>
@@ -580,7 +792,8 @@
                         <span>How long does recovery take?</span>
                         <i class="fas fa-chevron-down text-[#c38a36] text-sm"></i>
                     </div>
-                    <div class="faq-answer text-sm">Timeline varies, but many cases are resolved within 24-72 hours. Complex cases may take longer, and we provide regular updates throughout the process.</div>
+                    <div class="faq-answer text-sm">Timeline varies, but many cases are resolved within 24-72 hours.
+                        Complex cases may take longer, and we provide regular updates throughout the process.</div>
                 </div>
 
                 <div class="faq-item bg-[#1a1a1a] rounded-xl border border-[#2a2a2a] shadow-sm overflow-hidden">
@@ -588,7 +801,8 @@
                         <span>What are your fees? Is there an upfront payment?</span>
                         <i class="fas fa-chevron-down text-[#c38a36] text-sm"></i>
                     </div>
-                    <div class="faq-answer text-sm">We operate on a "No Recovery, No Fee" basis. You only pay a percentage of the recovered amount after we successfully retrieve your funds.</div>
+                    <div class="faq-answer text-sm">We operate on a "No Recovery, No Fee" basis. You only pay a
+                        percentage of the recovered amount after we successfully retrieve your funds.</div>
                 </div>
 
                 <div class="faq-item bg-[#1a1a1a] rounded-xl border border-[#2a2a2a] shadow-sm overflow-hidden">
@@ -596,7 +810,8 @@
                         <span>Which cryptocurrencies can you recover?</span>
                         <i class="fas fa-chevron-down text-[#c38a36] text-sm"></i>
                     </div>
-                    <div class="faq-answer text-sm">We support Bitcoin, Ethereum, Dogecoin, XRP, and many other cryptocurrencies. Contact us to check if your specific wallet or coin is supported.</div>
+                    <div class="faq-answer text-sm">We support Bitcoin, Ethereum, Dogecoin, XRP, and many other
+                        cryptocurrencies. Contact us to check if your specific wallet or coin is supported.</div>
                 </div>
 
                 <div class="faq-item bg-[#1a1a1a] rounded-xl border border-[#2a2a2a] shadow-sm overflow-hidden">
@@ -604,7 +819,8 @@
                         <span>Is my information kept confidential?</span>
                         <i class="fas fa-chevron-down text-[#c38a36] text-sm"></i>
                     </div>
-                    <div class="faq-answer text-sm">Absolutely. We maintain strict confidentiality and comply with all relevant privacy regulations.</div>
+                    <div class="faq-answer text-sm">Absolutely. We maintain strict confidentiality and comply with all
+                        relevant privacy regulations.</div>
                 </div>
 
                 <div class="faq-item bg-[#1a1a1a] rounded-xl border border-[#2a2a2a] shadow-sm overflow-hidden">
@@ -612,7 +828,8 @@
                         <span>Do you work with law enforcement?</span>
                         <i class="fas fa-chevron-down text-[#c38a36] text-sm"></i>
                     </div>
-                    <div class="faq-answer text-sm">Yes, we collaborate with cybercrime units and law enforcement agencies when necessary to assist with investigations and asset recovery.</div>
+                    <div class="faq-answer text-sm">Yes, we collaborate with cybercrime units and law enforcement
+                        agencies when necessary to assist with investigations and asset recovery.</div>
                 </div>
             </div>
         </div>
@@ -620,17 +837,20 @@
 
     <!-- ====== CONTACT ====== -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8" id="contact">
-        <div class="bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] rounded-3xl p-8 md:p-12 border border-[#2a2a2a] text-center">
+        <div
+            class="bg-gradient-to-br from-[#1a1a1a] to-[#0d0d0d] rounded-3xl p-8 md:p-12 border border-[#2a2a2a] text-center">
             <h3 class="text-2xl md:text-3xl font-bold text-white">Speak With an Expert</h3>
             <p class="text-[#9a9a9a] mt-2">Contact us for a confidential, no‑obligation case evaluation.</p>
             <div class="flex flex-wrap justify-center gap-6 mt-6">
                 <a href="tel:+18663817925" class="btn-primary">
                     <i class="fas fa-phone"></i> +1-866-381-7925
                 </a>
-                <a href="https://wa.me/12098890576" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#1da851] text-white font-semibold px-6 py-3 rounded-full transition shadow-lg">
+                <a href="https://wa.me/12098890576" target="_blank" rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#1da851] text-white font-semibold px-6 py-3 rounded-full transition shadow-lg">
                     <i class="fab fa-whatsapp"></i> WhatsApp
                 </a>
-                <a href="https://t.me/Alex_watson11" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-[#0088cc] hover:bg-[#006699] text-white font-semibold px-6 py-3 rounded-full transition shadow-lg">
+                <a href="https://t.me/Alex_watson11" target="_blank" rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 bg-[#0088cc] hover:bg-[#006699] text-white font-semibold px-6 py-3 rounded-full transition shadow-lg">
                     <i class="fab fa-telegram-plane"></i> Telegram
                 </a>
             </div>
@@ -650,7 +870,8 @@
                         Professional Crypto Wallet Recovery
                     </p>
                     <p class="text-sm text-[#5a5a5a] mt-2">
-                        <i class="fas fa-phone mr-2 text-[#c38a36]"></i> <a href="tel:+18663817925" class="hover:text-[#c38a36] transition">+1-866-381-7925</a>
+                        <i class="fas fa-phone mr-2 text-[#c38a36]"></i> <a href="tel:+18663817925"
+                            class="hover:text-[#c38a36] transition">+1-866-381-7925</a>
                     </p>
                 </div>
                 <div class="flex flex-wrap items-center gap-4 text-sm">
@@ -669,13 +890,17 @@
 
     <!-- ====== FLOATING BUTTONS ====== -->
     <div class="floating-buttons">
-        <a href="https://t.me/Alex_watson11" target="_blank" rel="noopener noreferrer" class="floating-btn btn-telegram" aria-label="Telegram">
+        <a href="https://t.me/Alex_watson11" target="_blank" rel="noopener noreferrer" class="floating-btn btn-telegram"
+            aria-label="Telegram">
             <i class="fab fa-telegram-plane"></i>
         </a>
-        <a href="https://wa.me/12098890576" target="_blank" rel="noopener noreferrer" class="floating-btn btn-whatsapp" aria-label="WhatsApp">
+        <a href="https://wa.me/12098890576" target="_blank" rel="noopener noreferrer" class="floating-btn btn-whatsapp"
+            aria-label="WhatsApp">
             <i class="fab fa-whatsapp"></i>
         </a>
     </div>
+
+
 
     <!-- ====== SCRIPTS ====== -->
     <script>
@@ -683,7 +908,7 @@
         const toggleBtn = document.getElementById('menuToggle');
         const mobileMenu = document.getElementById('mobileMenu');
         if (toggleBtn && mobileMenu) {
-            toggleBtn.addEventListener('click', function() {
+            toggleBtn.addEventListener('click', function () {
                 mobileMenu.classList.toggle('hidden');
                 const icon = this.querySelector('i');
                 if (icon) {
@@ -695,24 +920,36 @@
 
         // ---- Success Stories ----
         const successData = [
-            { img: "https://images.pexels.com/photos/6919748/pexels-photo-6919748.jpeg", tag: "Bitcoin",
+            {
+                img: "https://images.pexels.com/photos/6919748/pexels-photo-6919748.jpeg", tag: "Bitcoin",
                 title: "Forgotten Wallet Password", desc: "Client lost access to 12 BTC wallet.",
-                amount: "12 BTC Recovered" },
-            { img: "https://images.pexels.com/photos/10842343/pexels-photo-10842343.png", tag: "Ethereum",
+                amount: "12 BTC Recovered"
+            },
+            {
+                img: "https://images.pexels.com/photos/10842343/pexels-photo-10842343.png", tag: "Ethereum",
                 title: "Locked Exchange Account", desc: "Funds stuck on exchange after account freeze.",
-                amount: "45 ETH Recovered" },
-            { img: "https://images.pexels.com/photos/8428066/pexels-photo-8428066.jpeg", tag: "Dogecoin",
+                amount: "45 ETH Recovered"
+            },
+            {
+                img: "https://images.pexels.com/photos/8428066/pexels-photo-8428066.jpeg", tag: "Dogecoin",
                 title: "Damaged Wallet File", desc: "Corrupted wallet file with 500k DOGE.",
-                amount: "500k DOGE Recovered" },
-            { img: "https://images.pexels.com/photos/6963849/pexels-photo-6963849.jpeg", tag: "XRP",
+                amount: "500k DOGE Recovered"
+            },
+            {
+                img: "https://images.pexels.com/photos/6963849/pexels-photo-6963849.jpeg", tag: "XRP",
                 title: "Ledger Wallet Recovery", desc: "Hardware wallet reset with 20k XRP.",
-                amount: "20k XRP Recovered" },
-            { img: "https://images.pexels.com/photos/7735794/pexels-photo-7735794.jpeg", tag: "Multi-Coin",
+                amount: "20k XRP Recovered"
+            },
+            {
+                img: "https://images.pexels.com/photos/7735794/pexels-photo-7735794.jpeg", tag: "Multi-Coin",
                 title: "Multi-Currency Wallet", desc: "Lost access to wallet with 5 different coins.",
-                amount: "$340k Recovered" },
-            { img: "https://images.pexels.com/photos/5934212/pexels-photo-5934212.jpeg", tag: "Exchange",
+                amount: "$340k Recovered"
+            },
+            {
+                img: "https://images.pexels.com/photos/5934212/pexels-photo-5934212.jpeg", tag: "Exchange",
                 title: "Exchange Lockout", desc: "Account locked due to 2FA reset issues.",
-                amount: "$860k Recovered" }
+                amount: "$860k Recovered"
+            }
         ];
 
         const successGrid = document.getElementById('successGrid');
@@ -735,12 +972,18 @@
 
         // ---- Testimonials ----
         const testimonialData = [
-            { text: "They helped recover my Bitcoin wallet after I forgot the password. Incredible service!",
-                author: "Michael R." },
-            { text: "Professional team and fast service. Highly recommended for anyone locked out of their crypto.",
-                author: "David P." },
-            { text: "They recovered my ETH wallet after months of being locked out. Life savers!",
-                author: "Sarah L." }
+            {
+                text: "They helped recover my Bitcoin wallet after I forgot the password. Incredible service!",
+                author: "Michael R."
+            },
+            {
+                text: "Professional team and fast service. Highly recommended for anyone locked out of their crypto.",
+                author: "David P."
+            },
+            {
+                text: "They recovered my ETH wallet after months of being locked out. Life savers!",
+                author: "Sarah L."
+            }
         ];
 
         const testimonialGrid = document.getElementById('testimonialGrid');
@@ -757,7 +1000,7 @@
         // ---- FAQ Accordion ----
         document.querySelectorAll('.faq-item').forEach(item => {
             const question = item.querySelector('.faq-question');
-            question.addEventListener('click', function() {
+            question.addEventListener('click', function () {
                 const isActive = item.classList.contains('active');
                 document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
                 if (!isActive) {
@@ -771,5 +1014,109 @@
         if (firstFaq) firstFaq.classList.add('active');
     </script>
 
+    <script>
+        // ====== FORM SUBMIT ======
+        async function submitForm(e) {
+            e.preventDefault();
+
+            const msgBox = document.getElementById("formMessage");
+
+            const data = {
+                first_name: document.querySelector('[name="first_name"]').value,
+                last_name: document.querySelector('[name="last_name"]').value,
+                phone: document.querySelector('[name="phone"]').value,
+                email: document.querySelector('[name="email"]').value,
+                wallet: document.querySelector('[name="wallet"]').value,
+                issue_type: document.querySelector('[name="issue_type"]').value,
+                message: document.querySelector('[name="message"]').value
+            };
+
+            try {
+                const res = await fetch("https://zbuogldftjvfixhrgiir.supabase.co/rest/v1/bitsrecover", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "apikey": "sb_publishable_hCnkrz4Eqt944Us3tR6Kjw_02v_I2dq",
+                        "Authorization": "Bearer sb_publishable_hCnkrz4Eqt944Us3tR6Kjw_02v_I2dq"
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (!res.ok) {
+                    const error = await res.text();
+                    throw new Error(error);
+                }
+
+                msgBox.innerText = "✅ Submitted Successfully!";
+                msgBox.className = "bg-green-500/20 text-green-400 py-3 rounded-lg text-center font-semibold border border-green-500/30";
+                msgBox.classList.remove("hidden");
+
+                e.target.reset();
+
+                setTimeout(() => {
+                    msgBox.classList.add("hidden");
+                    closeForm();
+                }, 2000);
+
+            } catch (err) {
+                console.error(err);
+
+                msgBox.innerText = "❌ Failed to submit! Please try again.";
+                msgBox.className = "bg-red-500/20 text-red-400 py-3 rounded-lg text-center font-semibold border border-red-500/30";
+                msgBox.classList.remove("hidden");
+
+                setTimeout(() => {
+                    msgBox.classList.add("hidden");
+                }, 3000);
+            }
+        }
+
+        // ====== WHATSAPP ======
+        function openWhatsApp() {
+            const number = "12098890576";
+            const message = "Hi, I need crypto recovery help";
+            const url = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
+            window.open(url, "_blank");
+        }
+
+        // ====== OPEN FORM ======
+        function openForm() {
+            const modal = document.getElementById("leadModal");
+            modal.classList.remove("hidden");
+            modal.classList.add("flex");
+            document.body.style.overflow = "hidden";
+        }
+
+        // ====== CLOSE FORM ======
+        function closeForm() {
+            const modal = document.getElementById("leadModal");
+            modal.classList.add("hidden");
+            modal.classList.remove("flex");
+            document.body.style.overflow = "";
+        }
+
+        // ====== CLOSE ON OUTSIDE CLICK ======
+        document.addEventListener("click", function (e) {
+            const modal = document.getElementById("leadModal");
+            if (e.target === modal) {
+                closeForm();
+            }
+        });
+
+        // ====== CLOSE ON ESC KEY ======
+        document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape") {
+                closeForm();
+            }
+        });
+
+        // ====== AUTO OPEN AFTER 1 SECOND ======
+        document.addEventListener("DOMContentLoaded", function () {
+            setTimeout(function () {
+                openForm();
+            }, 1000);
+        });
+    </script>
 </body>
+
 </html>
