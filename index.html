@@ -1,33 +1,279 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>BitsRecover – Professional Crypto Wallet Recovery</title>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&display=swap" rel="stylesheet" />
 
-    <title>BitsRecover – Professional Crypto Wallet Recoveryyy</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
-    <meta name="description"
-        content="Lost access to Bitcoin, Ethereum or other cryptocurrencies? Our expert recovery team helps you regain your funds safely.">
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com">
+    </script>
 
-    <script src="https://cdn.tailwindcss.com"></script>
-
+    <!-- Custom overrides – same style as terms page -->
     <style>
-        html {
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            background: #fafaff;
+            color: #1e1b3b;
             scroll-behavior: smooth;
+            min-height: 100vh;
         }
 
-        :root {
-            --primary: #f59e0b;
+        /* Glassmorphism card */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
         }
 
-        .gradient-btn {
-            background: linear-gradient(135deg, #fbbf24, #f97316);
+        /* Gradient text */
+        .gradient-text {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed, #6d28d9);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .gradient-text-dark {
+            background: linear-gradient(135deg, #312e81, #4f46e5);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Floating buttons */
+        .floating-buttons {
+            position: fixed;
+            right: 24px;
+            bottom: 100px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            z-index: 999;
+        }
+
+        .floating-btn {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            color: #fff;
+            text-decoration: none;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .floating-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-telegram {
+            background: linear-gradient(135deg, #0088cc, #006699);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+        }
+
+        /* Navbar link */
+        .nav-link {
+            position: relative;
+            color: #4b476b;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: #4f46e5;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2.5px;
+            background: linear-gradient(90deg, #4f46e5, #7c3aed);
+            transition: width 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: #4f46e5;
+        }
+
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* Primary button */
+        .btn-primary {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: #fff;
+            padding: 0.5rem 1.4rem;
+            border-radius: 40px;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 14px rgba(79, 70, 229, 0.35);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(79, 70, 229, 0.45);
+            color: #fff;
+        }
+
+        /* Hero decorative shapes */
+        .hero-shape {
+            position: absolute;
+            top: -40%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle at 30% 40%, rgba(79, 70, 229, 0.10), rgba(124, 58, 237, 0.05) 70%, transparent);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .hero-shape-2 {
+            position: absolute;
+            bottom: -30%;
+            left: -8%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle at 60% 50%, rgba(124, 58, 237, 0.08), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Success card */
+        .success-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .success-card:hover {
+            transform: translateY(-8px);
+            border-color: #7c3aed;
+            box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.12);
+        }
+
+        /* Scam card */
+        .scam-card {
+            transition: transform 0.25s ease, border-color 0.25s ease;
+        }
+
+        .scam-card:hover {
+            transform: translateY(-4px);
+            border-color: #7c3aed;
+        }
+
+        /* FAQ */
+        .faq-question {
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .faq-question:hover {
+            background: rgba(79, 70, 229, 0.06);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s ease, padding 0.35s ease;
+            padding: 0 1rem;
+            color: #475569;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding: 1rem 1rem 0.5rem;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-question i {
+            transition: transform 0.3s ease;
+        }
+
+        /* Trust badge */
+        .trust-badge {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .trust-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        /* Footer links */
+        .footer-link {
+            color: #a5b4fc;
+            transition: color 0.2s;
+            font-weight: 400;
+        }
+
+        .footer-link:hover {
+            color: #c7d2fe;
+            text-decoration: underline;
+        }
+
+        /* Mobile menu */
+        @media (max-width: 768px) {
+            .floating-buttons {
+                right: 16px;
+                bottom: 80px;
+                gap: 12px;
+            }
+
+            .floating-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 22px;
+            }
+
+            .hero-shape,
+            .hero-shape-2 {
+                display: none;
+            }
+        }
+
+        /* Crisp chat override */
+        .crisp-client .cc-1wrj8 {
+            border-radius: 20px !important;
         }
     </style>
-
-    <link rel="stylesheet" href="index.css">
 
 
  <script src="//code.jivosite.com/widget/A5bhk4G2a2" async></script>
@@ -35,620 +281,422 @@
 
 </head>
 
+<body>
 
-<body class="bg-gray-50 font-sans">
-
-
-    <!-- LEAD FORM MODAL -->
-    <div id="leadModal" class="fixed inset-0 bg-black bg-opacity-70 hidden justify-center items-center z-50">
-
-        <div class="bg-white w-full max-w-lg p-8 rounded-2xl relative shadow-2xl">
-
-            <!-- CLOSE -->
-            <button onclick="closeForm()" class="absolute top-3 right-4 text-xl font-bold">✖</button>
-
-            <h2 class="text-2xl font-bold mb-2 text-center">Start Your Recovery</h2>
-            <div id="formMessage" class="hidden text-center py-3 rounded-lg font-semibold"></div>
-            <p class="text-center text-gray-500 mb-6">Fill the form or contact via WhatsApp</p>
-
-            <!-- FORM -->
-            <form class="space-y-4" onsubmit="submitForm(event)">
-
-                <!-- NAME -->
-                <div class="grid grid-cols-2 gap-3">
-                    <input type="text" name="first_name" placeholder="First Name *" required
-                        class="w-full border p-3 rounded-lg">
-                    <input type="text" name="last_name" placeholder="Last Name *" required
-                        class="w-full border p-3 rounded-lg">
-                </div>
-
-
-                <input type="tel" name="phone" placeholder="Mobile Number *" required
-                    class="w-full border p-3 rounded-lg">
-
-                <!-- EMAIL -->
-                <input type="email" name="email" placeholder="Email Address *" required
-                    class="w-full border p-3 rounded-lg">
-
-                <!-- WALLET -->
-                <input type="text" name="wallet" placeholder="Exchange / Wallet Platform (e.g. Binance, MetaMask)"
-                    class="w-full border p-3 rounded-lg">
-
-                <!-- ISSUE TYPE -->
-                <select name="issue_type" required class="w-full border p-3 rounded-lg">
-                    <option value="">Select your issue</option>
-                    <option>Wallet Access / Lost Password</option>
-                    <option>Pending / Failed Transaction</option>
-                    <option>Withdrawal Not Received</option>
-                    <option>Deposit Not Credited</option>
-                    <option>Account Locked / Frozen</option>
-                    <option>Unauthorized Access / Hacked Account</option>
-                    <option>Staking / Rewards Issue</option>
-                    <option>Billing / Fee Dispute</option>
-                    <option>KYC / Verification Problem</option>
-                    <option>Tax Statement / Trade History</option>
-                    <option>Other</option>
-                </select>
-
-                <!-- MESSAGE -->
-                <textarea name="message" rows="1" placeholder="Describe your issue..."
-                    class="w-full border p-3 rounded-lg"></textarea>
-
-                <!-- CHECKBOXES -->
-                <div class="text-sm space-y-2 text-gray-600">
-
-                    <label class="flex items-start gap-2">
-                        <input type="checkbox" required>
-                        <span>I agree to the Terms of Service and Privacy Policy.</span>
-                    </label>
-
-
-                </div>
-
-                <!-- SUBMIT -->
-                <button type="submit" class="w-full gradient-btn text-white py-3 rounded-lg font-bold text-lg">
-                    Connect to Specialist 🚀
-                </button>
-
-            </form>
-            <!-- DIVIDER -->
-            <div class="flex items-center my-6">
-                <div class="flex-1 h-px bg-gray-300"></div>
-                <span class="px-3 text-gray-500 text-sm">OR</span>
-                <div class="flex-1 h-px bg-gray-300"></div>
-            </div>
-
-            <!-- WHATSAPP BUTTON -->
-            <a onclick="openWhatsApp()"
-                class="block w-full bg-green-500 text-white text-center py-3 rounded-lg font-bold hover:bg-green-600">
-                💬 Chat on WhatsApp
-            </a>
-
-        </div>
-
-    </div>
-
-
-    <!-- TOP BAR -->
-
-    <div class="bg-yellow-400 text-center py-2 text-sm font-semibold">
-
-        <a onclick="openWhatsApp()" class="hover:underline">
-            Start Your Recovery Process →
-        </a>
-
-    </div>
-
-
-
-    <!-- HEADER -->
-
-    <header class="bg-white shadow sticky top-0 z-50">
-
-        <div class="max-w-7xl mx-auto px-4">
-
-            <div class="flex justify-between items-center py-4">
-
+    <!-- ====== NAVBAR ====== -->
+    <nav class="sticky top-0 z-[1000] bg-white/80 backdrop-blur-lg border-b border-indigo-100/60 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 md:h-20">
                 <!-- Logo -->
-
-                <a href="/" class="flex items-center">
-
-                    <img src="https://bitsrecover.com/logo.png" class="h-12">
-
-                </a>
-
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-shield-halved text-indigo-600 text-2xl"></i>
+                    <span class="text-xl md:text-2xl font-extrabold tracking-tight gradient-text-dark">
+                        Bits<span class="text-indigo-600">Recover</span>
+                    </span>
+                </div>
 
                 <!-- Desktop Nav -->
+                <ul class="hidden md:flex items-center gap-8 text-sm font-medium">
+                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="cases.html" class="nav-link">Cases</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li>
+                        <a href="tel:+18663817925" class="btn-primary">
+                            <i class="fas fa-phone"></i> Call Now
+                        </a>
+                    </li>
+                </ul>
 
-                <nav class="hidden md:flex space-x-8 items-center">
-
-                    <a href="services.html" class="text-gray-700 hover:text-yellow-500">Services</a>
-
-                    <a href="whychooseus.html" class="text-gray-700 hover:text-yellow-500">Why Choose Us</a>
-
-                    <a href="testimonials.html" class="text-gray-700 hover:text-yellow-500">Testimonials</a>
-
-                    <a href="blog.html" class="text-gray-700 hover:text-yellow-500">Blog</a>
-
-                    <a onclick="openForm()"
-                        class="gradient-btn text-white px-6 py-2 rounded-full font-semibold hover:brightness-110">
-                        Get Started
-                    </a>
-
-                </nav>
-
-
-                <!-- Mobile Button -->
-
-                <button id="menuBtn" class="md:hidden">
-
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16" />
-
-                    </svg>
-
+                <!-- Mobile toggle -->
+                <button id="menuToggle" class="md:hidden text-2xl text-indigo-900 focus:outline-none" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
                 </button>
-
             </div>
 
-
-            <!-- MOBILE MENU -->
-
-            <div id="mobileMenu" class="hidden md:hidden pb-6">
-
-                <a href="services.html" class="block py-2">Services</a>
-
-                <a href="whychooseus.html" class="block py-2">Why Choose Us</a>
-
-                <a href="testimonials.html" class="block py-2">Testimonials</a>
-
-                <a href="blog.html" class="block py-2">Blog</a>
-
-                <a onclick="openForm()" class="block mt-2 bg-yellow-500 text-white px-5 py-2 rounded-full text-center">
-                    Get Started
-                </a>
-
+            <!-- Mobile Nav -->
+            <div id="mobileMenu" class="md:hidden hidden pb-4 border-t border-indigo-100/50 mt-2 pt-4">
+                <ul class="flex flex-col gap-3 text-sm font-medium">
+                    <li><a href="index.html" class="nav-link active block py-1">Home</a></li>
+                    <li><a href="about.html" class="nav-link block py-1">About</a></li>
+                    <li><a href="services.html" class="nav-link block py-1">Services</a></li>
+                    <li><a href="cases.html" class="nav-link block py-1">Cases</a></li>
+                    <li><a href="contact.html" class="nav-link block py-1">Contact</a></li>
+                    <li class="mt-2">
+                        <a href="tel:+18663817925" class="btn-primary w-full justify-center">
+                            <i class="fas fa-phone"></i> Call Now
+                        </a>
+                    </li>
+                </ul>
             </div>
+        </div>
+    </nav>
 
+    <!-- ====== HERO ====== -->
+    <section class="relative overflow-hidden bg-gradient-to-br from-indigo-50/80 via-white to-purple-50/60 px-4 py-16 md:py-24">
+        <div class="hero-shape"></div>
+        <div class="hero-shape-2"></div>
+
+        <div class="max-w-6xl mx-auto relative z-10">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-10">
+                <!-- Left: text -->
+                <div class="md:max-w-2xl">
+                    <div class="inline-flex items-center gap-2 bg-indigo-100/60 text-indigo-700 text-xs font-semibold px-4 py-1.5 rounded-full border border-indigo-200/50 mb-5">
+                        <i class="fas fa-bolt text-indigo-500"></i>
+                        Lost Access To Your Crypto? We Can Recover It
+                    </div>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
+                        Recover Lost <br /><span class="gradient-text">Bitcoin, Ethereum &amp; More</span>
+                    </h1>
+                    <p class="mt-4 text-lg text-slate-600 max-w-xl leading-relaxed">
+                        Recover lost Bitcoin, Ethereum, Dogecoin, XRP, damaged wallets, forgotten passwords and more with our expert crypto recovery specialists.
+                    </p>
+
+                    <!-- Stats -->
+                    <div class="flex flex-wrap gap-6 mt-6">
+                        <div>
+                            <div class="text-2xl md:text-3xl font-extrabold text-indigo-600">$200M+</div>
+                            <div class="text-xs uppercase tracking-wider text-slate-500">Recovered</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl md:text-3xl font-extrabold text-indigo-600">98%</div>
+                            <div class="text-xs uppercase tracking-wider text-slate-500">Success Rate</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl md:text-3xl font-extrabold text-indigo-600">24-72 hrs</div>
+                            <div class="text-xs uppercase tracking-wider text-slate-500">Fast Turnaround</div>
+                        </div>
+                    </div>
+
+                    <!-- CTAs -->
+                    <div class="flex flex-wrap items-center gap-4 mt-8">
+                        <a href="tel:+18663817925" class="btn-primary">
+                            <i class="fas fa-phone"></i> Call +1-866-381-7925
+                        </a>
+                        <a href="success-stories.html" class="inline-flex items-center gap-2 text-indigo-600 font-semibold hover:text-indigo-800 transition">
+                            View Cases <i class="fas fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right: glass card -->
+                <div class="flex-shrink-0">
+                    <div class="glass-card rounded-3xl p-6 shadow-xl border border-white/50 max-w-xs mx-auto md:mx-0">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white text-xl shadow-lg shadow-indigo-500/25">
+                                <i class="fas fa-bitcoin"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-indigo-900">BitsRecover</p>
+                                <p class="text-xs text-slate-500">Professional Crypto Recovery</p>
+                            </div>
+                        </div>
+                        <div class="h-px bg-indigo-100/70 my-3"></div>
+                        <div class="flex items-center justify-between text-sm">
+                            <span class="text-slate-600"><i class="fas fa-check-circle text-indigo-500 mr-1.5"></i> No Recovery No Fee</span>
+                            <span class="text-slate-600"><i class="fas fa-star text-amber-400 mr-1.5"></i> 4.9 / 5.0</span>
+                        </div>
+                        <a href="tel:+18663817925" class="mt-4 block text-center bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold py-2.5 rounded-xl transition shadow-md shadow-indigo-500/20">
+                            <i class="fas fa-phone mr-2"></i> Call Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== TRUST BADGES ====== -->
+    <div class="max-w-7xl mx-auto px-4 py-10">
+        <div class="flex flex-wrap justify-center gap-4 md:gap-8">
+            <div class="trust-badge bg-white rounded-2xl px-5 py-3 border border-slate-100 shadow-sm flex items-center gap-3">
+                <i class="fas fa-shield-alt text-indigo-600 text-xl"></i>
+                <span class="font-semibold text-sm text-slate-700">Secure Process</span>
+            </div>
+            <div class="trust-badge bg-white rounded-2xl px-5 py-3 border border-slate-100 shadow-sm flex items-center gap-3">
+                <i class="fas fa-coins text-indigo-600 text-xl"></i>
+                <span class="font-semibold text-sm text-slate-700">All Cryptos Supported</span>
+            </div>
+            <div class="trust-badge bg-white rounded-2xl px-5 py-3 border border-slate-100 shadow-sm flex items-center gap-3">
+                <i class="fas fa-bolt text-indigo-600 text-xl"></i>
+                <span class="font-semibold text-sm text-slate-700">Fast Recovery</span>
+            </div>
+            <div class="trust-badge bg-white rounded-2xl px-5 py-3 border border-slate-100 shadow-sm flex items-center gap-3">
+                <i class="fas fa-hand-holding-usd text-indigo-600 text-xl"></i>
+                <span class="font-semibold text-sm text-slate-700">Lowest Fees</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ====== SUCCESS STORIES ====== -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8" id="success-stories">
+        <div class="text-center mb-10">
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Real Recovery Success Stories</h2>
+            <p class="text-slate-500 mt-2">How we helped clients recover their crypto assets</p>
         </div>
 
-    </header>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="successGrid">
+            <!-- Injected via JS -->
+        </div>
+    </div>
 
+    <!-- ====== TESTIMONIALS ====== -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div class="bg-indigo-50/50 rounded-3xl p-8 md:p-12 border border-indigo-100/30">
+            <h3 class="text-2xl md:text-3xl font-bold text-center text-slate-900 mb-8">Client Testimonials</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="testimonialGrid">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+    </div>
 
+    <!-- ====== SERVICES ====== -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="text-center mb-10">
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900">Our Crypto Recovery Services</h2>
+            <p class="text-slate-500 mt-2">Specialized solutions for every type of crypto loss</p>
+        </div>
 
-    <!-- HERO -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition">
+                <div class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 text-xl mb-4">
+                    <i class="fas fa-key"></i>
+                </div>
+                <h4 class="font-bold text-slate-900 text-lg">Lost Password Recovery</h4>
+                <p class="text-sm text-slate-500 mt-1">Recover forgotten wallet passwords and encrypted wallet files.</p>
+            </div>
+            <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition">
+                <div class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 text-xl mb-4">
+                    <i class="fas fa-exchange-alt"></i>
+                </div>
+                <h4 class="font-bold text-slate-900 text-lg">Exchange Recovery</h4>
+                <p class="text-sm text-slate-500 mt-1">Recover funds stuck on exchanges or locked accounts.</p>
+            </div>
+            <div class="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md transition">
+                <div class="w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600 text-xl mb-4">
+                    <i class="fas fa-microchip"></i>
+                </div>
+                <h4 class="font-bold text-slate-900 text-lg">Hardware Wallet Recovery</h4>
+                <p class="text-sm text-slate-500 mt-1">Ledger, Trezor and other hardware wallet recovery.</p>
+            </div>
+        </div>
+    </div>
 
-    <section class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white py-24">
-
-        <div class="max-w-7xl mx-auto px-4 text-center">
-
-
-             <a href="tel:+18663817925"
-                class="inline-flex items-center gap-3 bg-gradient-to-r from-yellow-400 to-amber-500 text-black px-8 py-4 rounded-full text-lg font-bold mb-8 shadow-lg shadow-yellow-500/30 hover:scale-105 hover:shadow-yellow-500/50 transition-all duration-300 cursor-pointer">
-
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path
-                        d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.11.37 2.3.56 3.58.56a1 1 0 011 1V20a1 1 0 01-1 1C10.07 21 3 13.93 3 5a1 1 0 011-1h3.5a1 1 0 011 1c0 1.28.19 2.47.56 3.58a1 1 0 01-.24 1.01l-2.2 2.2z" />
-                </svg>
-
-                Call Now: +1-866-381-7925
-            </a>
-            
-            <h1 class="text-4xl md:text-6xl font-bold mb-6">
-
-                Lost Access To Your Crypto?
-
-                <span class="text-yellow-400">
-                    We Can Recover It
-                </span>
-
-            </h1>
-
-
-            <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-10">
-
-                Recover lost Bitcoin, Ethereum, Dogecoin, XRP, damaged wallets,
-                forgotten passwords and more with our expert crypto recovery specialists.
-
+    <!-- ====== WHY CHOOSE US ====== -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div class="bg-indigo-50/50 rounded-3xl p-8 md:p-10 border-l-4 border-indigo-600">
+            <h3 class="text-2xl font-bold text-slate-900 mb-3">Why Choose BitsRecover?</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
+                <div>
+                    <div class="flex items-center gap-3">
+                        <i class="fas fa-user-tie text-indigo-600 text-xl"></i>
+                        <span class="font-semibold text-slate-800">Professional Experts</span>
+                    </div>
+                    <p class="text-sm text-slate-600 mt-1">Experienced blockchain engineers with years of recovery experience.</p>
+                </div>
+                <div>
+                    <div class="flex items-center gap-3">
+                        <i class="fas fa-hand-holding-usd text-indigo-600 text-xl"></i>
+                        <span class="font-semibold text-slate-800">No Recovery No Fee</span>
+                    </div>
+                    <p class="text-sm text-slate-600 mt-1">You only pay when we successfully recover your funds.</p>
+                </div>
+                <div>
+                    <div class="flex items-center gap-3">
+                        <i class="fas fa-bolt text-indigo-600 text-xl"></i>
+                        <span class="font-semibold text-slate-800">Fast Turnaround</span>
+                    </div>
+                    <p class="text-sm text-slate-600 mt-1">Many cases resolved within 24-72 hours.</p>
+                </div>
+            </div>
+            <p class="text-slate-600 leading-relaxed mt-6">
+                <strong>Ready to recover your crypto?</strong> Call us now at <strong>+1-866-381-7925</strong> for a confidential, no‑obligation case evaluation.
             </p>
-
-
-            <a onclick="openForm()" class="gradient-btn px-10 py-5 text-xl rounded-full font-bold hover:brightness-110">
-
-                Start Recovery Now →
-
-            </a>
-
         </div>
+    </div>
 
-    </section>
+    <!-- ====== FAQ ====== -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="bg-indigo-50/40 rounded-3xl p-8 md:p-10 border border-indigo-100/30">
+            <h3 class="text-2xl md:text-3xl font-bold text-center text-slate-900 mb-8">Frequently Asked Questions</h3>
 
-
-
-    <!-- FEATURES -->
-
-    <section class="py-16 bg-white">
-
-        <div class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-
-            <div>
-                <div class="text-5xl mb-4 text-yellow-500">$</div>
-                <h3 class="font-bold">Lowest Fees</h3>
-            </div>
-
-            <div>
-                <div class="text-5xl mb-4 text-yellow-500">⚡</div>
-                <h3 class="font-bold">Fast Recovery</h3>
-            </div>
-
-            <div>
-                <div class="text-5xl mb-4 text-yellow-500">🔐</div>
-                <h3 class="font-bold">Secure Process</h3>
-            </div>
-
-            <div>
-                <div class="text-5xl mb-4 text-yellow-500">₿</div>
-                <h3 class="font-bold">All Cryptos Supported</h3>
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- SERVICES -->
-
-    <section id="services" class="py-20 bg-gray-100">
-
-        <div class="max-w-7xl mx-auto px-4">
-
-            <h2 class="text-4xl font-bold text-center mb-12">
-
-                Crypto Recovery Services
-
-            </h2>
-
-
-            <div class="grid md:grid-cols-3 gap-10">
-
-
-                <div class="bg-white p-8 rounded-xl shadow hover:shadow-xl transition">
-
-                    <h3 class="text-xl font-bold mb-3">Lost Password Recovery</h3>
-
-                    <p class="text-gray-600">
-
-                        Recover forgotten wallet passwords and encrypted wallet files.
-
-                    </p>
-
+            <div class="space-y-3">
+                <div class="faq-item bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden">
+                    <div class="faq-question flex items-center justify-between p-4 font-semibold text-slate-800">
+                        <span>How long does recovery take?</span>
+                        <i class="fas fa-chevron-down text-indigo-600 text-sm"></i>
+                    </div>
+                    <div class="faq-answer text-sm">Timeline varies, but many cases are resolved within 24-72 hours. Complex cases may take longer, and we provide regular updates throughout the process.</div>
                 </div>
 
-
-
-                <div class="bg-white p-8 rounded-xl shadow hover:shadow-xl transition">
-
-                    <h3 class="text-xl font-bold mb-3">Exchange Recovery</h3>
-
-                    <p class="text-gray-600">
-
-                        Recover funds stuck on exchanges or locked accounts.
-
-                    </p>
-
+                <div class="faq-item bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden">
+                    <div class="faq-question flex items-center justify-between p-4 font-semibold text-slate-800">
+                        <span>What are your fees? Is there an upfront payment?</span>
+                        <i class="fas fa-chevron-down text-indigo-600 text-sm"></i>
+                    </div>
+                    <div class="faq-answer text-sm">We operate on a "No Recovery, No Fee" basis. You only pay a percentage of the recovered amount after we successfully retrieve your funds.</div>
                 </div>
 
-
-
-                <div class="bg-white p-8 rounded-xl shadow hover:shadow-xl transition">
-
-                    <h3 class="text-xl font-bold mb-3">Hardware Wallet Recovery</h3>
-
-                    <p class="text-gray-600">
-
-                        Ledger, Trezor and other hardware wallet recovery.
-
-                    </p>
-
+                <div class="faq-item bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden">
+                    <div class="faq-question flex items-center justify-between p-4 font-semibold text-slate-800">
+                        <span>Which cryptocurrencies can you recover?</span>
+                        <i class="fas fa-chevron-down text-indigo-600 text-sm"></i>
+                    </div>
+                    <div class="faq-answer text-sm">We support Bitcoin, Ethereum, Dogecoin, XRP, and many other cryptocurrencies. Contact us to check if your specific wallet or coin is supported.</div>
                 </div>
 
+                <div class="faq-item bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden">
+                    <div class="faq-question flex items-center justify-between p-4 font-semibold text-slate-800">
+                        <span>Is my information kept confidential?</span>
+                        <i class="fas fa-chevron-down text-indigo-600 text-sm"></i>
+                    </div>
+                    <div class="faq-answer text-sm">Absolutely. We maintain strict confidentiality and comply with all relevant privacy regulations.</div>
+                </div>
+
+                <div class="faq-item bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden">
+                    <div class="faq-question flex items-center justify-between p-4 font-semibold text-slate-800">
+                        <span>Do you work with law enforcement?</span>
+                        <i class="fas fa-chevron-down text-indigo-600 text-sm"></i>
+                    </div>
+                    <div class="faq-answer text-sm">Yes, we collaborate with cybercrime units and law enforcement agencies when necessary to assist with investigations and asset recovery.</div>
+                </div>
             </div>
-
         </div>
+    </div>
 
-    </section>
-
-
-
-    <!-- WHY US -->
-
-    <section id="why-us" class="py-20 bg-white">
-
-        <div class="max-w-7xl mx-auto px-4">
-
-            <h2 class="text-4xl font-bold text-center mb-16">
-
-                Why Choose BitsRecover
-
-            </h2>
-
-
-            <div class="grid md:grid-cols-3 gap-10 text-center">
-
-
+    <!-- ====== FOOTER ====== -->
+    <footer class="bg-slate-900 text-slate-300 px-4 py-12 mt-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
                 <div>
-
-                    <div class="text-6xl mb-6">👨‍💻</div>
-
-                    <h3 class="font-bold text-xl mb-3">
-
-                        Professional Experts
-
-                    </h3>
-
-                    <p class="text-gray-600">
-
-                        Experienced blockchain engineers with years of recovery experience.
-
+                    <div class="flex items-center gap-2 text-xl font-extrabold text-white">
+                        <i class="fas fa-shield-halved text-indigo-400"></i>
+                        Bits<span class="text-indigo-400">Recover</span>
+                    </div>
+                    <p class="text-sm text-slate-400 mt-1 max-w-sm">
+                        Professional Crypto Wallet Recovery
                     </p>
-
-                </div>
-
-
-                <div>
-
-                    <div class="text-6xl mb-6">💰</div>
-
-                    <h3 class="font-bold text-xl mb-3">
-
-                        No Recovery No Fee
-
-                    </h3>
-
-                    <p class="text-gray-600">
-
-                        You only pay when we successfully recover your funds.
-
+                    <p class="text-sm text-slate-400 mt-2">
+                        <i class="fas fa-phone mr-2"></i> <a href="tel:+18663817925" class="hover:text-indigo-300 transition">+1-866-381-7925</a>
                     </p>
-
                 </div>
-
-
-                <div>
-
-                    <div class="text-6xl mb-6">⚡</div>
-
-                    <h3 class="font-bold text-xl mb-3">
-
-                        Fast Turnaround
-
-                    </h3>
-
-                    <p class="text-gray-600">
-
-                        Many cases resolved within 24-72 hours.
-
-                    </p>
-
+                <div class="flex flex-wrap items-center gap-4 text-sm">
+                    <a href="privacy-policy.html" class="footer-link">Privacy Policy</a>
+                    <span class="text-slate-600">|</span>
+                    <a href="terms.html" class="footer-link">Terms of Service</a>
+                    <span class="text-slate-600">|</span>
+                    <a href="contact.html" class="footer-link">Contact</a>
                 </div>
-
-
             </div>
-
+            <div class="border-t border-slate-800/60 mt-6 pt-6 text-center text-xs text-slate-500">
+                &copy; 2026 BitsRecover – All rights reserved.
+            </div>
         </div>
-
-    </section>
-
-
-
-    <!-- TESTIMONIALS -->
-
-    <section id="testimonials" class="py-20 bg-gray-50">
-
-        <div class="max-w-7xl mx-auto px-4">
-
-            <h2 class="text-4xl font-bold text-center mb-12">
-
-                Client Testimonials
-
-            </h2>
-
-
-            <div class="grid md:grid-cols-3 gap-8">
-
-
-                <div class="bg-white p-6 rounded-xl shadow">
-
-                    <p>
-
-                        "They helped recover my Bitcoin wallet after I forgot the password."
-
-                    </p>
-
-                    <p class="font-bold mt-4">Michael R.</p>
-
-                </div>
-
-
-
-                <div class="bg-white p-6 rounded-xl shadow">
-
-                    <p>
-
-                        "Professional team and fast service. Highly recommended."
-
-                    </p>
-
-                    <p class="font-bold mt-4">David P.</p>
-
-                </div>
-
-
-
-                <div class="bg-white p-6 rounded-xl shadow">
-
-                    <p>
-
-                        "They recovered my ETH wallet after months of being locked out."
-
-                    </p>
-
-                    <p class="font-bold mt-4">Sarah L.</p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- CTA -->
-
-    <section class="bg-gradient-to-br from-yellow-500 to-orange-600 text-white py-20 text-center">
-
-        <h2 class="text-4xl font-bold mb-6">
-
-            Start Your Crypto Recovery Today
-
-        </h2>
-
-        <a onclick="openForm()" class="bg-white text-orange-600 px-10 py-5 text-xl font-bold rounded-full">
-
-            Contact Our Experts →
-
-        </a>
-
-    </section>
-
-        
-        
-        
-     
-
-         <!-- Floating Contact Buttons -->
-                <div class="fixed right-6 sm:right-6 bottom-[88px] z-[9999] flex flex-col gap-3 mb-2">
-                
-                    <!-- Live Chat
-                    <button onclick="$crisp.push(['do', 'chat:open'])"
-                        title="Live Chat"
-                        class="w-14 h-14 bg-orange-500 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition duration-300">
-                        💬
-                    </button> -->
-                
-                    <!-- WhatsApp -->
-                    <a href="https://wa.me/18663817925?text=Hello%20I%20need%20help%20with%20recover%20my%20crypto"
-                        target="_blank"
-                        title="WhatsApp"
-                        class="w-14 h-14 whatsapp-btn bg-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition duration-300">
-                        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png"
-                            alt="WhatsApp"
-                            class="w-8 h-8">
-                    </a>
-                
-                    <!-- Telegram -->
-                    <a href="https://t.me/Alex_watson11"
-                        target="_blank"
-                        title="Telegram"
-                        class="w-14 h-14 bg-white telegram-btn rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition duration-300">
-                        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png"
-                            alt="Telegram"
-                            class="w-8 h-8">
-                    </a>
-                
-                </div>
-
-
-
-    <!-- FOOTER -->
-
-    <footer class="bg-gray-900 text-gray-300 py-16">
-
-        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-4 gap-10">
-
-
-            <div>
-
-                <img src="https://bitsrecover.com/logo.png" class="h-12 mb-4">
-
-                <p>Professional Crypto Wallet Recovery Service</p>
-
-            </div>
-
-
-
-            <div>
-
-                <h4 class="text-white font-bold mb-4">Company</h4>
-
-                <ul class="space-y-2">
-
-                    <li><a href="about.html">About</a></li>
-
-                    <li><a href="blog.html">Blog</a></li>
-
-                    <li><a href="contact-us.html">Contact</a></li>
-
-                </ul>
-
-            </div>
-
-
-
-            <div>
-
-                <h4 class="text-white font-bold mb-4">Legal</h4>
-
-                <ul class="space-y-2">
-
-                    <li><a href="privacy.html">Privacy Policy</a></li>
-
-                    <li><a href="terms.html">Terms</a></li>
-
-                    <li><a href="disclaimer.html">Disclaimer</a></li>
-
-                </ul>
-
-            </div>
-
-
-
-            <div>
-
-                <h4 class="text-white font-bold mb-4">Wallets</h4>
-
-                <ul class="space-y-2">
-
-                    <li>MetaMask</li>
-                    <li>Ledger</li>
-                    <li>Trezor</li>
-                    <li>Electrum</li>
-
-                </ul>
-
-            </div>
-
-
-        </div>
-
-        <div class="text-center mt-10 border-t border-gray-700 pt-6 text-sm">
-
-            © 2026 BitsRecover. All rights reserved.
-
-        </div>
-
     </footer>
 
+    <!-- ====== FLOATING BUTTONS ====== -->
+    <div class="floating-buttons">
+        <a href="https://t.me/Alex_watson11" target="_blank" rel="noopener noreferrer" class="floating-btn btn-telegram" aria-label="Telegram">
+            <i class="fab fa-telegram-plane"></i>
+        </a>
+        <a href="https://wa.me/18663817925" target="_blank" rel="noopener noreferrer" class="floating-btn btn-whatsapp" aria-label="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
 
+    <!-- ====== SCRIPTS ====== -->
+    <script>
+        // ---- Mobile menu ----
+        const toggleBtn = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        if (toggleBtn && mobileMenu) {
+            toggleBtn.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+                const icon = this.querySelector('i');
+                if (icon) {
+                    icon.classList.toggle('fa-bars');
+                    icon.classList.toggle('fa-xmark');
+                }
+            });
+        }
 
-    <script src="index.js"></script>
+        // ---- Success Stories ----
+        const successData = [
+            { img: "https://images.pexels.com/photos/6919748/pexels-photo-6919748.jpeg", tag: "Bitcoin",
+                title: "Forgotten Wallet Password", desc: "Client lost access to 12 BTC wallet.",
+                amount: "12 BTC Recovered" },
+            { img: "https://images.pexels.com/photos/10842343/pexels-photo-10842343.png", tag: "Ethereum",
+                title: "Locked Exchange Account", desc: "Funds stuck on exchange after account freeze.",
+                amount: "45 ETH Recovered" },
+            { img: "https://images.pexels.com/photos/8428066/pexels-photo-8428066.jpeg", tag: "Dogecoin",
+                title: "Damaged Wallet File", desc: "Corrupted wallet file with 500k DOGE.",
+                amount: "500k DOGE Recovered" },
+            { img: "https://images.pexels.com/photos/6963849/pexels-photo-6963849.jpeg", tag: "XRP",
+                title: "Ledger Wallet Recovery", desc: "Hardware wallet reset with 20k XRP.",
+                amount: "20k XRP Recovered" },
+            { img: "https://images.pexels.com/photos/7735794/pexels-photo-7735794.jpeg", tag: "Multi-Coin",
+                title: "Multi-Currency Wallet", desc: "Lost access to wallet with 5 different coins.",
+                amount: "$340k Recovered" },
+            { img: "https://images.pexels.com/photos/5934212/pexels-photo-5934212.jpeg", tag: "Exchange",
+                title: "Exchange Lockout", desc: "Account locked due to 2FA reset issues.",
+                amount: "$860k Recovered" }
+        ];
+
+        const successGrid = document.getElementById('successGrid');
+        successData.forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'success-card bg-white rounded-2xl overflow-hidden border border-slate-100 shadow-sm';
+            card.innerHTML = `
+                        <div class="relative">
+                            <img class="w-full h-48 object-cover" src="${item.img}" alt="${item.title}" loading="lazy" />
+                            <span class="absolute top-3 left-3 bg-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-full">${item.tag}</span>
+                        </div>
+                        <div class="p-5">
+                            <h4 class="font-bold text-slate-900 text-lg">${item.title}</h4>
+                            <p class="text-sm text-slate-500 mt-1">${item.desc}</p>
+                            <span class="inline-block mt-3 bg-indigo-50 text-indigo-700 text-sm font-semibold px-4 py-1.5 rounded-full">💰 ${item.amount}</span>
+                        </div>
+                    `;
+            successGrid.appendChild(card);
+        });
+
+        // ---- Testimonials ----
+        const testimonialData = [
+            { text: "They helped recover my Bitcoin wallet after I forgot the password. Incredible service!",
+                author: "Michael R." },
+            { text: "Professional team and fast service. Highly recommended for anyone locked out of their crypto.",
+                author: "David P." },
+            { text: "They recovered my ETH wallet after months of being locked out. Life savers!",
+                author: "Sarah L." }
+        ];
+
+        const testimonialGrid = document.getElementById('testimonialGrid');
+        testimonialData.forEach(t => {
+            const div = document.createElement('div');
+            div.className = 'bg-white rounded-2xl p-6 border border-slate-100 shadow-sm';
+            div.innerHTML = `
+                        <p class="text-slate-700 italic text-sm leading-relaxed">“${t.text}”</p>
+                        <p class="mt-3 font-semibold text-indigo-700 text-sm">- ${t.author}</p>
+                    `;
+            testimonialGrid.appendChild(div);
+        });
+
+        // ---- FAQ Accordion ----
+        document.querySelectorAll('.faq-item').forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', function() {
+                const isActive = item.classList.contains('active');
+                document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Open first FAQ by default
+        const firstFaq = document.querySelector('.faq-item');
+        if (firstFaq) firstFaq.classList.add('active');
+    </script>
 
 </body>
-
 </html>

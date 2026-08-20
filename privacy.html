@@ -1,456 +1,374 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Privacy Policy | BitsRecover – Professional Crypto Wallet Recovery</title>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&display=swap" rel="stylesheet" />
 
-    <title>BitsRecover – Professional Crypto Wallet Recovery</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
 
-    <meta name="description"
-        content="Lost access to Bitcoin, Ethereum or other cryptocurrencies? Our expert recovery team helps you regain your funds safely.">
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com">
+    </script>
 
-    <script src="https://cdn.tailwindcss.com"></script>
-
+    <!-- Custom overrides – same as Terms page -->
     <style>
-        html {
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            background: #fafaff;
+            color: #1e1b3b;
             scroll-behavior: smooth;
+            min-height: 100vh;
         }
 
-        :root {
-            --primary: #f59e0b;
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
         }
 
-        .gradient-btn {
-            background: linear-gradient(135deg, #fbbf24, #f97316);
+        .gradient-text {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed, #6d28d9);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .gradient-text-dark {
+            background: linear-gradient(135deg, #312e81, #4f46e5);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .floating-buttons {
+            position: fixed;
+            right: 24px;
+            bottom: 100px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            z-index: 999;
+        }
+
+        .floating-btn {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            color: #fff;
+            text-decoration: none;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .floating-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-telegram {
+            background: linear-gradient(135deg, #0088cc, #006699);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+        }
+
+        .nav-link {
+            position: relative;
+            color: #4b476b;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: #4f46e5;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2.5px;
+            background: linear-gradient(90deg, #4f46e5, #7c3aed);
+            transition: width 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: #4f46e5;
+        }
+
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            color: #fff;
+            padding: 0.5rem 1.4rem;
+            border-radius: 40px;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 14px rgba(79, 70, 229, 0.35);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(79, 70, 229, 0.45);
+            color: #fff;
+        }
+
+        .hero-shape {
+            position: absolute;
+            top: -40%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle at 30% 40%, rgba(79, 70, 229, 0.10), rgba(124, 58, 237, 0.05) 70%, transparent);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .hero-shape-2 {
+            position: absolute;
+            bottom: -30%;
+            left: -8%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle at 60% 50%, rgba(124, 58, 237, 0.08), transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .footer-link {
+            color: #a5b4fc;
+            transition: color 0.2s;
+            font-weight: 400;
+        }
+
+        .footer-link:hover {
+            color: #c7d2fe;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .floating-buttons {
+                right: 16px;
+                bottom: 80px;
+                gap: 12px;
+            }
+            .floating-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 22px;
+            }
+            .hero-shape,
+            .hero-shape-2 {
+                display: none;
+            }
+        }
+
+        .crisp-client .cc-1wrj8 {
+            border-radius: 20px !important;
+        }
+
+        .legal-list li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        .legal-list li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #4f46e5;
+            font-weight: bold;
         }
     </style>
 
-    <link rel="stylesheet" href="index.css">
-    <script src="//code.jivosite.com/widget/C5T3VmwYw6" async></script>
+  
+ <script src="//code.jivosite.com/widget/A5bhk4G2a2" async></script>
+
 
 </head>
 
 <body>
 
-
-
-    <!-- LEAD FORM MODAL -->
-    <div id="leadModal" class="fixed inset-0 bg-black bg-opacity-70 hidden justify-center items-center z-50">
-
-        <div class="bg-white w-full max-w-lg p-8 rounded-2xl relative shadow-2xl">
-
-            <!-- CLOSE -->
-            <button onclick="closeForm()" class="absolute top-3 right-4 text-xl font-bold">✖</button>
-
-            <h2 class="text-2xl font-bold mb-2 text-center">Start Your Recovery</h2>
-            <div id="formMessage" class="hidden text-center py-3 rounded-lg font-semibold"></div>
-            <p class="text-center text-gray-500 mb-6">Fill the form or contact via WhatsApp</p>
-
-            <!-- FORM -->
-            <form class="space-y-4" onsubmit="submitForm(event)">
-
-                <!-- NAME -->
-                <div class="grid grid-cols-2 gap-3">
-                    <input type="text" name="first_name" placeholder="First Name *" required
-                        class="w-full border p-3 rounded-lg">
-                    <input type="text" name="last_name" placeholder="Last Name *" required
-                        class="w-full border p-3 rounded-lg">
+    <!-- ====== NAVBAR ====== -->
+    <nav class="sticky top-0 z-[1000] bg-white/80 backdrop-blur-lg border-b border-indigo-100/60 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 md:h-20">
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-shield-halved text-indigo-600 text-2xl"></i>
+                    <span class="text-xl md:text-2xl font-extrabold tracking-tight gradient-text-dark">
+                        Bits<span class="text-indigo-600">Recover</span>
+                    </span>
                 </div>
-
-                <input type="tel" name="phone" placeholder="Mobile Number *" pattern="[0-9]{10}"
-                    class="w-full border p-3 rounded-lg">
-
-
-                <!-- EMAIL -->
-                <input type="email" name="email" placeholder="Email Address *" required
-                    class="w-full border p-3 rounded-lg">
-
-                <!-- WALLET -->
-                <input type="text" name="wallet" placeholder="Exchange / Wallet Platform (e.g. Binance, MetaMask)"
-                    class="w-full border p-3 rounded-lg">
-
-                <!-- ISSUE TYPE -->
-                <select name="issue_type" required class="w-full border p-3 rounded-lg">
-                    <option value="">Select your issue</option>
-                    <option>Wallet Access / Lost Password</option>
-                    <option>Pending / Failed Transaction</option>
-                    <option>Withdrawal Not Received</option>
-                    <option>Deposit Not Credited</option>
-                    <option>Account Locked / Frozen</option>
-                    <option>Unauthorized Access / Hacked Account</option>
-                    <option>Staking / Rewards Issue</option>
-                    <option>Billing / Fee Dispute</option>
-                    <option>KYC / Verification Problem</option>
-                    <option>Tax Statement / Trade History</option>
-                    <option>Other</option>
-                </select>
-
-                <!-- MESSAGE -->
-                <textarea name="message" rows="1" placeholder="Describe your issue..."
-                    class="w-full border p-3 rounded-lg"></textarea>
-
-                <!-- CHECKBOXES -->
-                <div class="text-sm space-y-2 text-gray-600">
-
-                    <label class="flex items-start gap-2">
-                        <input type="checkbox" required>
-                        <span>I agree to the Terms of Service and Privacy Policy.</span>
-                    </label>
-
-
-                </div>
-
-                <!-- SUBMIT -->
-                <button type="submit" class="w-full gradient-btn text-white py-3 rounded-lg font-bold text-lg">
-                    Connect to Specialist 🚀
-                </button>
-
-            </form>
-            <!-- DIVIDER -->
-            <div class="flex items-center my-6">
-                <div class="flex-1 h-px bg-gray-300"></div>
-                <span class="px-3 text-gray-500 text-sm">OR</span>
-                <div class="flex-1 h-px bg-gray-300"></div>
+                <ul class="hidden md:flex items-center gap-8 text-sm font-medium">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="cases.html" class="nav-link">Cases</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                    <li><a href="tel:+18663817925" class="btn-primary"><i class="fas fa-phone"></i> Call Now</a></li>
+                </ul>
+                <button id="menuToggle" class="md:hidden text-2xl text-indigo-900 focus:outline-none"><i class="fas fa-bars"></i></button>
             </div>
-
-            <!-- WHATSAPP BUTTON -->
-            <a onclick="openWhatsApp()"
-                class="block w-full bg-green-500 text-white text-center py-3 rounded-lg font-bold hover:bg-green-600">
-                💬 Chat on WhatsApp
-            </a>
-
+            <div id="mobileMenu" class="md:hidden hidden pb-4 border-t border-indigo-100/50 mt-2 pt-4">
+                <ul class="flex flex-col gap-3 text-sm font-medium">
+                    <li><a href="index.html" class="nav-link block py-1">Home</a></li>
+                    <li><a href="about.html" class="nav-link block py-1">About</a></li>
+                    <li><a href="services.html" class="nav-link block py-1">Services</a></li>
+                    <li><a href="cases.html" class="nav-link block py-1">Cases</a></li>
+                    <li><a href="contact.html" class="nav-link block py-1">Contact</a></li>
+                    <li class="mt-2"><a href="tel:+18663817925" class="btn-primary w-full justify-center"><i class="fas fa-phone"></i> Call Now</a></li>
+                </ul>
+            </div>
         </div>
+    </nav>
 
-    </div>
-
-
-
-    <!-- TOP BAR -->
-
-    <div class="bg-yellow-400 text-center py-2 text-sm font-semibold">
-
-        <a onclick="openWhatsApp()" class="hover:underline">
-            Start Your Recovery Process →
-        </a>
-
-    </div>
-
-
-
-    <!-- HEADER -->
-
-    <header class="bg-white shadow sticky top-0 z-50">
-
-        <div class="max-w-7xl mx-auto px-4">
-
-            <div class="flex justify-between items-center py-4">
-
-                <!-- Logo -->
-
-                <a href="/" class="flex items-center">
-
-                    <img src="https://bitsrecover.com/logo.png" class="h-12">
-
-                </a>
-
-
-                <!-- Desktop Nav -->
-
-                <nav class="hidden md:flex space-x-8 items-center">
-
-                    <a href="services.html" class="text-gray-700 hover:text-yellow-500">Services</a>
-
-                    <a href="whychooseus.html" class="text-gray-700 hover:text-yellow-500">Why Choose Us</a>
-
-                    <a href="testimonials.html" class="text-gray-700 hover:text-yellow-500">Testimonials</a>
-
-                    <a href="blog.html" class="text-gray-700 hover:text-yellow-500">Blog</a>
-
-                    <a onclick="openForm()"
-                        class="gradient-btn text-white px-6 py-2 rounded-full font-semibold hover:brightness-110">
-                        Get Started
-                    </a>
-
-                </nav>
-
-
-                <!-- Mobile Button -->
-
-                <button id="menuBtn" class="md:hidden">
-
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16" />
-
-                    </svg>
-
-                </button>
-
-            </div>
-
-
-            <!-- MOBILE MENU -->
-
-            <div id="mobileMenu" class="hidden md:hidden pb-6">
-
-                <a href="services.html" class="block py-2">Services</a>
-
-                <a href="whychooseus.html" class="block py-2">Why Choose Us</a>
-
-                <a href="testimonials.html" class="block py-2">Testimonials</a>
-
-                <a href="blog.html" class="block py-2">Blog</a>
-
-                <a onclick="openForm()" class="block mt-2 bg-yellow-500 text-white px-5 py-2 rounded-full text-center">
-                    Get Started
-                </a>
-
-            </div>
-
+    <!-- ====== HERO ====== -->
+    <section class="relative overflow-hidden bg-gradient-to-br from-indigo-50/80 via-white to-purple-50/60 px-4 py-16 md:py-24">
+        <div class="hero-shape"></div>
+        <div class="hero-shape-2"></div>
+        <div class="max-w-4xl mx-auto relative z-10 text-center">
+            <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">Privacy <span class="gradient-text">Policy</span></h1>
+            <p class="mt-4 text-lg text-slate-600">How BitsRecover handles, protects, and secures your personal data.</p>
         </div>
-
-    </header>
-
-    <section class="max-w-7xl mx-auto px-4 py-10 text-gray-800">
-
-        <h1 class="text-3xl font-bold mb-6">Privacy Policy</h1>
-
-        <p class="mb-4"><strong>Last updated:</strong> October 31st, 2023</p>
-
-        <p class="mb-4">
-            Thank you for choosing to be part of our community at Professional Crypto Recovery LLC
-            ("Company", "we", "us", "our"). We are committed to protecting your personal information
-            and your right to privacy. If you have any questions or concerns about this privacy notice,
-            or our practices with regards to your personal information, please contact us at
-            <strong>support@professionalcryptorecovery.com</strong>.
-        </p>
-
-        <p class="mb-4">
-            When you visit our website https://www.bitsrecover.com (the "Website"),
-            and more generally use any of our services (the "Services"), we appreciate that you are
-            trusting us with your personal information. We take your privacy very seriously.
-        </p>
-
-        <p class="mb-6">
-            In this privacy notice, we explain what information we collect, how we use it, and
-            what rights you have in relation to it. If there are any terms in this privacy notice
-            that you do not agree with, please discontinue use of our Services immediately.
-        </p>
-
-
-        <h2 class="text-2xl font-semibold mt-8 mb-4">What Information Do We Collect?</h2>
-
-        <p class="mb-4">
-            We collect personal information that you voluntarily provide to us when you express
-            interest in obtaining information about our services, when you participate in
-            activities on the Website, or when you contact us.
-        </p>
-
-        <p class="mb-4">
-            The personal information we collect may include names, phone numbers, email addresses,
-            mailing addresses, contact preferences, authentication data, wallets, cryptocurrency
-            information, passwords, and other similar information.
-        </p>
-
-
-        <h2 class="text-2xl font-semibold mt-8 mb-4">Information Automatically Collected</h2>
-
-        <p class="mb-4">
-            Some information such as your IP address, browser type, device characteristics,
-            operating system, language preferences, referring URLs, and location may be collected
-            automatically when you visit or use our website.
-        </p>
-
-        <p class="mb-4">
-            This information is primarily used to maintain the security and operation of our
-            website and for internal analytics and reporting purposes.
-        </p>
-
-
-        <h2 class="text-2xl font-semibold mt-8 mb-4">How Do We Use Your Information?</h2>
-
-        <p class="mb-4">
-            We use the information we collect for several business purposes, including:
-        </p>
-
-        <ul class="list-disc ml-6 mb-6 space-y-2">
-            <li>To send administrative information about services and updates.</li>
-            <li>To protect our services and prevent fraud.</li>
-            <li>To comply with legal obligations.</li>
-            <li>To respond to user inquiries and provide customer support.</li>
-            <li>To analyze data and improve our website and services.</li>
-        </ul>
-
-
-        <h2 class="text-2xl font-semibold mt-8 mb-4">Will Your Information Be Shared?</h2>
-
-        <p class="mb-4">
-            We only share your information with your consent, to comply with laws,
-            to provide services, or to protect rights and safety.
-        </p>
-
-        <p class="mb-6">
-            We may share your information with third-party vendors, consultants,
-            and service providers who perform services on our behalf.
-        </p>
-
-
-        <h2 class="text-2xl font-semibold mt-8 mb-4">Cookies and Tracking Technologies</h2>
-
-        <p class="mb-6">
-            We may use cookies and similar tracking technologies to collect and store
-            your information. You can modify your browser settings to refuse cookies,
-            but this may affect some features of the website.
-        </p>
-
-
-        <h2 class="text-2xl font-semibold mt-8 mb-4">How Long Do We Keep Your Information?</h2>
-
-        <p class="mb-6">
-            We keep your personal information only for as long as necessary to fulfill
-            the purposes outlined in this privacy notice, unless a longer retention
-            period is required by law.
-        </p>
-
-
-        <h2 class="text-2xl font-semibold mt-8 mb-4">How Do We Keep Your Information Safe?</h2>
-
-        <p class="mb-6">
-            We use appropriate technical and organizational security measures to protect
-            your personal information. However, no electronic transmission or storage
-            system can be guaranteed to be completely secure.
-        </p>
-
-
-        <h2 class="text-2xl font-semibold mt-8 mb-4">Do We Collect Information From Minors?</h2>
-
-        <p class="mb-6">
-            We do not knowingly collect data from children under 18 years of age.
-            If we become aware that such data has been collected, we will take
-            steps to delete it.
-        </p>
-
-
-        <h2 class="text-2xl font-semibold mt-8 mb-4">Your Privacy Rights</h2>
-
-        <p class="mb-6">
-            You may review, update, or delete your personal information at any time
-            by contacting us.
-        </p>
-
-
-        <h2 class="text-2xl font-semibold mt-8 mb-4">Updates To This Policy</h2>
-
-        <p class="mb-6">
-            We may update this privacy notice from time to time to stay compliant
-            with applicable laws. The updated version will be indicated by the
-            updated date.
-        </p>
-
-
-        <h2 class="text-2xl font-semibold mt-8 mb-4">Contact Us</h2>
-
-        <p class="mb-2">
-            If you have any questions about this Privacy Policy, you may contact us:
-        </p>
-
-        <p class="mb-2">
-            Email: support@bitsrecover.com
-        </p>
-
-        <p>
-            bitsrecover.com<br>
-            PO BOX 296<br>
-            Rexford, MT 59930<br>
-            United States
-        </p>
-
     </section>
 
-    <footer class="bg-gray-900 text-gray-300 py-16">
+    <!-- ====== CONTENT ====== -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="glass-card rounded-3xl p-6 md:p-10 shadow-xl border border-white/50">
+            <div class="prose prose-indigo max-w-none">
+                <p class="text-slate-500 text-sm border-b border-slate-200 pb-4 mb-6"><i class="far fa-calendar-alt mr-2"></i> Last Updated: August 20, 2026</p>
 
-        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-4 gap-10">
-
-
-            <div>
-
-                <img src="https://bitsrecover.com/logo.png" class="h-12 mb-4">
-
-                <p>Professional Crypto Wallet Recovery Service</p>
-
-            </div>
-
-
-
-            <div>
-
-                <h4 class="text-white font-bold mb-4">Company</h4>
-
-                <ul class="space-y-2">
-
-                    <li><a href="about.html">About</a></li>
-
-                    <li><a href="blog.html">Blog</a></li>
-
-                    <li><a href="contact-us.html">Contact</a></li>
-
+                <h2 class="text-2xl font-bold text-slate-900 mt-8 mb-3">1. Information We Collect</h2>
+                <p class="text-slate-600 leading-relaxed">We collect information that you voluntarily provide to us when you contact us via our website, Crisp Chat, Telegram, WhatsApp, or email. This may include:</p>
+                <ul class="legal-list text-slate-600 leading-relaxed">
+                    <li>Your name, email address, and phone number.</li>
+                    <li>Cryptocurrency wallet addresses and transaction details relevant to your recovery case.</li>
+                    <li>Communication history and case notes.</li>
                 </ul>
 
-            </div>
-
-
-
-            <div>
-
-                <h4 class="text-white font-bold mb-4">Legal</h4>
-
-                <ul class="space-y-2">
-
-                    <li><a href="privacy.html">Privacy Policy</a></li>
-
-                    <li><a href="terms.html">Terms</a></li>
-
-                    <li><a href="disclaimer.html">Disclaimer</a></li>
-
+                <h2 class="text-2xl font-bold text-slate-900 mt-8 mb-3">2. How We Use Your Information</h2>
+                <p class="text-slate-600 leading-relaxed">We use the information collected to:</p>
+                <ul class="legal-list text-slate-600 leading-relaxed">
+                    <li>Provide and improve our crypto recovery services.</li>
+                    <li>Communicate with you regarding your case status and updates.</li>
+                    <li>Comply with legal obligations and regulatory requirements.</li>
+                    <li>Prevent fraud and ensure the security of our services.</li>
                 </ul>
 
-            </div>
+                <h2 class="text-2xl font-bold text-slate-900 mt-8 mb-3">3. Data Security &amp; Confidentiality</h2>
+                <p class="text-slate-600 leading-relaxed">We implement industry-standard security measures to protect your personal information from unauthorized access, alteration, or disclosure. All client data is treated with strict confidentiality. We do not sell, trade, or rent your personal information to third parties. Your case details are shared only with authorized BitsRecover personnel directly involved in your recovery.</p>
 
+                <h2 class="text-2xl font-bold text-slate-900 mt-8 mb-3">4. Third-Party Communication Platforms</h2>
+                <p class="text-slate-600 leading-relaxed">We use third-party platforms such as Crisp Chat, Telegram, and WhatsApp for communication. These platforms have their own privacy policies, and BitsRecover is not responsible for their security practices. We recommend reviewing their policies before using them to share sensitive information.</p>
 
+                <h2 class="text-2xl font-bold text-slate-900 mt-8 mb-3">5. Cookies &amp; Tracking</h2>
+                <p class="text-slate-600 leading-relaxed">Our website uses cookies to enhance user experience and analyze site traffic. You can control cookie preferences through your browser settings. We do not use cookies to collect personally identifiable information without your consent.</p>
 
-            <div>
-
-                <h4 class="text-white font-bold mb-4">Wallets</h4>
-
-                <ul class="space-y-2">
-
-                    <li>MetaMask</li>
-                    <li>Ledger</li>
-                    <li>Trezor</li>
-                    <li>Electrum</li>
-
+                <h2 class="text-2xl font-bold text-slate-900 mt-8 mb-3">6. Your Rights (GDPR &amp; CCPA)</h2>
+                <p class="text-slate-600 leading-relaxed">If you are a resident of the European Economic Area (EEA) or California, you have the right to:</p>
+                <ul class="legal-list text-slate-600 leading-relaxed">
+                    <li>Access the personal data we hold about you.</li>
+                    <li>Request correction or deletion of your personal data.</li>
+                    <li>Restrict or object to the processing of your data.</li>
+                    <li>Request data portability.</li>
                 </ul>
+                <p class="text-slate-600 leading-relaxed mt-3">To exercise these rights, please contact us at <strong>+1-866-381-7925</strong> or via Telegram.</p>
 
+                <h2 class="text-2xl font-bold text-slate-900 mt-8 mb-3">7. Data Retention</h2>
+                <p class="text-slate-600 leading-relaxed">We retain your personal data only for as long as necessary to fulfill the purposes outlined in this policy, comply with legal obligations, or resolve disputes. Case records are typically retained for up to 7 years after case closure for legal and regulatory purposes.</p>
+
+                <h2 class="text-2xl font-bold text-slate-900 mt-8 mb-3">8. Children's Privacy</h2>
+                <p class="text-slate-600 leading-relaxed">Our services are not directed to individuals under the age of 18. We do not knowingly collect personal information from minors. If you believe we have inadvertently collected such data, please contact us immediately.</p>
+
+                <h2 class="text-2xl font-bold text-slate-900 mt-8 mb-3">9. Changes to This Policy</h2>
+                <p class="text-slate-600 leading-relaxed">We may update this Privacy Policy periodically. We will notify you of any material changes by posting the new policy on this page with an updated date. We encourage you to review this page regularly.</p>
+
+                <h2 class="text-2xl font-bold text-slate-900 mt-8 mb-3">10. Contact Us</h2>
+                <p class="text-slate-600 leading-relaxed">If you have any questions, concerns, or requests regarding this Privacy Policy or your personal data, please contact us:</p>
+                <div class="mt-4 p-5 bg-indigo-50/70 rounded-2xl border border-indigo-100/50">
+                    <p class="text-slate-700"><i class="fas fa-phone text-indigo-600 mr-2"></i> <a href="tel:+18663817925" class="text-indigo-600 font-semibold">+1-866-381-7925</a></p>
+                    <p class="text-slate-700"><i class="fab fa-telegram-plane text-indigo-600 mr-2"></i> <a href="https://t.me/Alex_watson11" class="text-indigo-600 font-semibold">@Alex_watson11</a></p>
+                    <p class="text-slate-700"><i class="fab fa-whatsapp text-indigo-600 mr-2"></i> <a href="https://wa.me/18663817925" class="text-indigo-600 font-semibold">+1-866-381-7925</a></p>
+                </div>
             </div>
-
-
         </div>
+    </div>
 
-        <div class="text-center mt-10 border-t border-gray-700 pt-6 text-sm">
-
-            © 2026 BitsRecover. All rights reserved.
-
+    <!-- ====== FOOTER ====== -->
+    <footer class="bg-slate-900 text-slate-300 px-4 py-12 mt-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                <div>
+                    <div class="flex items-center gap-2 text-xl font-extrabold text-white">
+                        <i class="fas fa-shield-halved text-indigo-400"></i>
+                        Bits<span class="text-indigo-400">Recover</span>
+                    </div>
+                    <p class="text-sm text-slate-400 mt-1 max-w-sm">Professional Crypto Wallet Recovery</p>
+                    <p class="text-sm text-slate-400 mt-2"><i class="fas fa-phone mr-2"></i> <a href="tel:+18663817925" class="hover:text-indigo-300 transition">+1-866-381-7925</a></p>
+                </div>
+                <div class="flex flex-wrap items-center gap-4 text-sm">
+                    <a href="privacy-policy.html" class="footer-link">Privacy Policy</a>
+                    <span class="text-slate-600">|</span>
+                    <a href="terms.html" class="footer-link">Terms of Service</a>
+                    <span class="text-slate-600">|</span>
+                    <a href="contact.html" class="footer-link">Contact</a>
+                </div>
+            </div>
+            <div class="border-t border-slate-800/60 mt-6 pt-6 text-center text-xs text-slate-500">&copy; 2026 BitsRecover – All rights reserved.</div>
         </div>
-
     </footer>
 
-    <script src="index.js"></script>
+    <!-- ====== FLOATING BUTTONS ====== -->
+    <div class="floating-buttons">
+        <a href="https://t.me/Alex_watson11" target="_blank" rel="noopener noreferrer" class="floating-btn btn-telegram"><i class="fab fa-telegram-plane"></i></a>
+        <a href="https://wa.me/18663817925" target="_blank" rel="noopener noreferrer" class="floating-btn btn-whatsapp"><i class="fab fa-whatsapp"></i></a>
+    </div>
 
-
+    <script>
+        const toggleBtn = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        if (toggleBtn && mobileMenu) {
+            toggleBtn.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+                const icon = this.querySelector('i');
+                if (icon) { icon.classList.toggle('fa-bars');
+                    icon.classList.toggle('fa-xmark'); }
+            });
+        }
+    </script>
 </body>
-
 </html>
